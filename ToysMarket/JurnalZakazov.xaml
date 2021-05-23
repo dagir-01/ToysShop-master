@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToysMarket"
+        xmlns:Models="clr-namespace:ToysMarket.Models" x:Class="ToysMarket.JurnalZakazov"
+        mc:Ignorable="d"
+        Title="JurnalZakazov" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="zakazViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:zakaz}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource zakazViewSource}">
+        <Button x:Name="EditButton" Content="Editbuuuuu" VerticalAlignment="Bottom" Click="EditButton_Click"/>
+        <DataGrid x:Name="zakazDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,108" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="date_pokupkiColumn" Width="SizeToHeader" Header="date pokupki" Binding="{Binding date_pokupki}"/>
+                <DataGridTextColumn x:Name="id_clientColumn" Width="SizeToHeader" Header="id client" Binding="{Binding clients.lastname}"/>
+                <DataGridTextColumn x:Name="id_prodavesColumn" Width="SizeToHeader" Header="id prodaves" Binding="{Binding prodaves.lastname}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

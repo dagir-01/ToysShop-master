@@ -1,0 +1,28 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToysMarket"
+        xmlns:Models="clr-namespace:ToysMarket.Models" x:Class="ToysMarket.Picktoy"
+        mc:Ignorable="d"
+        Title="Picktoy" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="toysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:toys}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource toysViewSource}">
+
+        <DataGrid x:Name="toysDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,382,209" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="id_brendsColumn" Width="SizeToHeader" Header="id brends" Binding="{Binding id_brends}"/>
+                <DataGridTextColumn x:Name="id_categoryColumn" Width="SizeToHeader" Header="id category" Binding="{Binding id_category}"/>
+                <DataGridTextColumn x:Name="id_type_toysColumn" Width="SizeToHeader" Header="id type toys" Binding="{Binding id_type_toys}"/>
+                <DataGridTextColumn x:Name="priceColumn" Width="SizeToHeader" Header="price" Binding="{Binding price}"/>
+                <DataGridTextColumn x:Name="quantityColumn" Width="SizeToHeader" Header="quantity" Binding="{Binding quantity}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="158" Height="41"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" Width="166" Height="41"/>
+
+    </Grid>
+</Window>

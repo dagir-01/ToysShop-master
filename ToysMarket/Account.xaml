@@ -1,0 +1,156 @@
+﻿<Window x:Class="ToysMarket.Account"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToysMarket"
+        mc:Ignorable="d"
+        Title="Account" Height="500" Width="800" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/profile/icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <BitmapImage x:Key="Image1" UriSource="/Profile/1.jpeg"/>
+            <BitmapImage x:Key="Image2" UriSource="/Profile/2.jpg"/>
+            <BitmapImage x:Key="Image3" UriSource="/Profile/3.jpg"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/> <!--Login $pass-->
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            Grid.Column="1"
+            Margin="50">
+
+            <Ellipse
+                Width="100"
+                Height="100"
+                HorizontalAlignment="Center">
+                <Ellipse.Fill>
+                    <ImageBrush
+                        Stretch="UniformToFill"
+                        ImageSource="Gambol.jpg"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <TextBlock
+                Margin="0,30,0,0">
+                Need an account? <Hyperlink 
+                    TextDecorations="None">SignUp</Hyperlink>
+            </TextBlock>
+
+            <Border
+                Height="50"
+                BorderBrush="Silver"
+                BorderThickness="2"
+                CornerRadius="4"
+                Margin="0,10">
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Path
+                    Width="25"
+                    Height="25"
+                    Data="{StaticResource mail_icon}"
+                    Fill="Silver"/>
+
+                    <TextBox
+                    x:Name="tUsername"
+                    BorderThickness="0"
+                    Foreground="Silver"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontWeight="SemiBold"/>
+                </Grid>
+            </Border>
+
+            <Border
+                Height="50"
+                BorderBrush="Silver"
+                BorderThickness="2"
+                CornerRadius="4"
+                Margin="0,0,0,20">
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Path
+                    Width="25"
+                    Height="25"
+                    Data="{StaticResource pass_icon}"
+                    Fill="Silver"/>
+
+                    <PasswordBox
+                    x:Name="tPassword"
+                    BorderThickness="0"
+                    Foreground="Silver"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontWeight="SemiBold"/>
+                </Grid>
+            </Border>
+
+            <Button
+                x:Name="enter"
+                BorderThickness="0"
+                Content="Login in"
+                Foreground="White"
+                Height="50" Click="enter_Click"/>
+        </StackPanel>
+        <Image
+            Source="{StaticResource Image1}"
+            Stretch="UniformToFill">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="Opacity"
+                                SpeedRatio=".5"
+                                From="1"
+                                To=".5"
+                                RepeatBehavior="Forever"/>
+
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="Opacity"
+                                SpeedRatio=".5"
+                                From=".5"
+                                To="1"
+                                RepeatBehavior="Forever"/>
+
+                            <ObjectAnimationUsingKeyFrames
+                                Storyboard.TargetProperty="Source"
+                                Duration="0:0:6"
+                                RepeatBehavior="Forever">
+                                <DiscreteObjectKeyFrame
+                                    Value="{StaticResource Image2}"
+                                    KeyTime="0:0:2"/>
+                                <DiscreteObjectKeyFrame
+                                    Value="{StaticResource Image3}"
+                                    KeyTime="0:0:4"/>
+
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+           
+        </Image>
+    </Grid>
+</Window>

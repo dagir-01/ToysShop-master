@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище ToysModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="brends">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lastname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar(max)" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jurnal_postavok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_postavki" Type="int" Nullable="false" />
+          <Property Name="id_toys" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="jurnal_zakazovs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_zakaz" Type="int" Nullable="false" />
+          <Property Name="id_toys" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="postavki">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_postavshik" Type="int" Nullable="false" />
+          <Property Name="date_postavki" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="postavshik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fax" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="prodaves">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lastname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar(max)" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="toys">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="id_type_toys" Type="int" Nullable="false" />
+          <Property Name="id_brends" Type="int" Nullable="false" />
+          <Property Name="id_category" Type="int" Nullable="false" />
+          <Property Name="image" Type="image" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ToysPhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToysID" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="image" />
+        </EntityType>
+        <EntityType Name="type_toys">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zakaz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_pokupki" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_client" Type="int" />
+          <Property Name="id_prodaves" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_clothes_brends">
+          <End Role="brends" Type="Self.brends" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brends">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_brends" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clothes_categories">
+          <End Role="categories" Type="Self.categories" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clothes_type_clothes">
+          <End Role="type_toys" Type="Self.type_toys" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_type_toys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jurnal_postavok_clothes">
+          <End Role="toys" Type="Self.toys" Multiplicity="1" />
+          <End Role="Jurnal_postavok" Type="Self.Jurnal_postavok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jurnal_postavok">
+              <PropertyRef Name="id_toys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jurnal_postavok_postavki">
+          <End Role="postavki" Type="Self.postavki" Multiplicity="1" />
+          <End Role="Jurnal_postavok" Type="Self.Jurnal_postavok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postavki">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jurnal_postavok">
+              <PropertyRef Name="id_postavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jurnal_zakazovs_clothes">
+          <End Role="toys" Type="Self.toys" Multiplicity="1" />
+          <End Role="jurnal_zakazovs" Type="Self.jurnal_zakazovs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jurnal_zakazovs">
+              <PropertyRef Name="id_zakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jurnal_zakazovs_zakaz">
+          <End Role="zakaz" Type="Self.zakaz" Multiplicity="1" />
+          <End Role="jurnal_zakazovs" Type="Self.jurnal_zakazovs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zakaz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jurnal_zakazovs">
+              <PropertyRef Name="id_zakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_postavki_postavshik">
+          <End Role="postavshik" Type="Self.postavshik" Multiplicity="1" />
+          <End Role="postavki" Type="Self.postavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postavshik">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="postavki">
+              <PropertyRef Name="id_postavshik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToysPhoto_toys">
+          <End Role="toys" Type="Self.toys" Multiplicity="1" />
+          <End Role="ToysPhoto" Type="Self.ToysPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ToysPhoto">
+              <PropertyRef Name="ToysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zakaz_clients">
+          <End Role="clients" Type="Self.clients" Multiplicity="0..1" />
+          <End Role="zakaz" Type="Self.zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="zakaz">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zakaz_prodaves">
+          <End Role="prodaves" Type="Self.prodaves" Multiplicity="1" />
+          <End Role="zakaz" Type="Self.zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prodaves">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="zakaz">
+              <PropertyRef Name="id_prodaves" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ToysModelContainer">
+          <EntitySet Name="brends" EntityType="Self.brends" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jurnal_postavok" EntityType="Self.Jurnal_postavok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jurnal_zakazovs" EntityType="Self.jurnal_zakazovs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="postavki" EntityType="Self.postavki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="postavshik" EntityType="Self.postavshik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prodaves" EntityType="Self.prodaves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="toys" EntityType="Self.toys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToysPhoto" EntityType="Self.ToysPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_toys" EntityType="Self.type_toys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zakaz" EntityType="Self.zakaz" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_clothes_brends" Association="Self.FK_clothes_brends">
+            <End Role="brends" EntitySet="brends" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clothes_categories" Association="Self.FK_clothes_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clothes_type_clothes" Association="Self.FK_clothes_type_clothes">
+            <End Role="type_toys" EntitySet="type_toys" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jurnal_postavok_clothes" Association="Self.FK_Jurnal_postavok_clothes">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="Jurnal_postavok" EntitySet="Jurnal_postavok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jurnal_postavok_postavki" Association="Self.FK_Jurnal_postavok_postavki">
+            <End Role="postavki" EntitySet="postavki" />
+            <End Role="Jurnal_postavok" EntitySet="Jurnal_postavok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jurnal_zakazovs_clothes" Association="Self.FK_jurnal_zakazovs_clothes">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="jurnal_zakazovs" EntitySet="jurnal_zakazovs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jurnal_zakazovs_zakaz" Association="Self.FK_jurnal_zakazovs_zakaz">
+            <End Role="zakaz" EntitySet="zakaz" />
+            <End Role="jurnal_zakazovs" EntitySet="jurnal_zakazovs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_postavki_postavshik" Association="Self.FK_postavki_postavshik">
+            <End Role="postavshik" EntitySet="postavshik" />
+            <End Role="postavki" EntitySet="postavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToysPhoto_toys" Association="Self.FK_ToysPhoto_toys">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="ToysPhoto" EntitySet="ToysPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zakaz_clients" Association="Self.FK_zakaz_clients">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="zakaz" EntitySet="zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zakaz_prodaves" Association="Self.FK_zakaz_prodaves">
+            <End Role="prodaves" EntitySet="prodaves" />
+            <End Role="zakaz" EntitySet="zakaz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ToysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="brends">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="toys" Relationship="Self.FK_clothes_brends" FromRole="brends" ToRole="toys" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="toys" Relationship="Self.FK_clothes_categories" FromRole="categories" ToRole="toys" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="zakaz" Relationship="Self.FK_zakaz_clients" FromRole="clients" ToRole="zakaz" />
+        </EntityType>
+        <EntityType Name="Jurnal_postavok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_postavki" Type="Int32" Nullable="false" />
+          <Property Name="id_toys" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="toys" Relationship="Self.FK_Jurnal_postavok_clothes" FromRole="Jurnal_postavok" ToRole="toys" />
+          <NavigationProperty Name="postavki" Relationship="Self.FK_Jurnal_postavok_postavki" FromRole="Jurnal_postavok" ToRole="postavki" />
+        </EntityType>
+        <EntityType Name="jurnal_zakazovs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_zakaz" Type="Int32" Nullable="false" />
+          <Property Name="id_toys" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="toys" Relationship="Self.FK_jurnal_zakazovs_clothes" FromRole="jurnal_zakazovs" ToRole="toys" />
+          <NavigationProperty Name="zakaz" Relationship="Self.FK_jurnal_zakazovs_zakaz" FromRole="jurnal_zakazovs" ToRole="zakaz" />
+        </EntityType>
+        <EntityType Name="postavki">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_postavshik" Type="Int32" Nullable="false" />
+          <Property Name="date_postavki" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Jurnal_postavok" Relationship="Self.FK_Jurnal_postavok_postavki" FromRole="postavki" ToRole="Jurnal_postavok" />
+          <NavigationProperty Name="postavshik" Relationship="Self.FK_postavki_postavshik" FromRole="postavki" ToRole="postavshik" />
+        </EntityType>
+        <EntityType Name="postavshik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="postavki" Relationship="Self.FK_postavki_postavshik" FromRole="postavshik" ToRole="postavki" />
+        </EntityType>
+        <EntityType Name="prodaves">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="zakaz" Relationship="Self.FK_zakaz_prodaves" FromRole="prodaves" ToRole="zakaz" />
+        </EntityType>
+        <EntityType Name="toys">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="id_type_toys" Type="Int32" Nullable="false" />
+          <Property Name="id_brends" Type="Int32" Nullable="false" />
+          <Property Name="id_category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="brends" Relationship="Self.FK_clothes_brends" FromRole="toys" ToRole="brends" />
+          <NavigationProperty Name="categories" Relationship="Self.FK_clothes_categories" FromRole="toys" ToRole="categories" />
+          <NavigationProperty Name="Jurnal_postavok" Relationship="Self.FK_Jurnal_postavok_clothes" FromRole="toys" ToRole="Jurnal_postavok" />
+          <NavigationProperty Name="jurnal_zakazovs" Relationship="Self.FK_jurnal_zakazovs_clothes" FromRole="toys" ToRole="jurnal_zakazovs" />
+          <NavigationProperty Name="type_toys" Relationship="Self.FK_clothes_type_clothes" FromRole="toys" ToRole="type_toys" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ToysPhoto" Relationship="ToysModel.FK_ToysPhoto_toys" FromRole="toys" ToRole="ToysPhoto" />
+        </EntityType>
+        <EntityType Name="type_toys">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="toys" Relationship="Self.FK_clothes_type_clothes" FromRole="type_toys" ToRole="toys" />
+        </EntityType>
+        <EntityType Name="zakaz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_pokupki" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_client" Type="Int32" />
+          <Property Name="id_prodaves" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK_zakaz_clients" FromRole="zakaz" ToRole="clients" />
+          <NavigationProperty Name="jurnal_zakazovs" Relationship="Self.FK_jurnal_zakazovs_zakaz" FromRole="zakaz" ToRole="jurnal_zakazovs" />
+          <NavigationProperty Name="prodaves" Relationship="Self.FK_zakaz_prodaves" FromRole="zakaz" ToRole="prodaves" />
+        </EntityType>
+        <Association Name="FK_clothes_brends">
+          <End Role="brends" Type="Self.brends" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brends">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_brends" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clothes_categories">
+          <End Role="categories" Type="Self.categories" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zakaz_clients">
+          <End Role="clients" Type="Self.clients" Multiplicity="0..1" />
+          <End Role="zakaz" Type="Self.zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="zakaz">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jurnal_postavok_clothes">
+          <End Role="toys" Type="Self.toys" Multiplicity="1" />
+          <End Role="Jurnal_postavok" Type="Self.Jurnal_postavok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jurnal_postavok">
+              <PropertyRef Name="id_toys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jurnal_postavok_postavki">
+          <End Role="postavki" Type="Self.postavki" Multiplicity="1" />
+          <End Role="Jurnal_postavok" Type="Self.Jurnal_postavok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postavki">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jurnal_postavok">
+              <PropertyRef Name="id_postavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jurnal_zakazovs_clothes">
+          <End Role="toys" Type="Self.toys" Multiplicity="1" />
+          <End Role="jurnal_zakazovs" Type="Self.jurnal_zakazovs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jurnal_zakazovs">
+              <PropertyRef Name="id_zakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jurnal_zakazovs_zakaz">
+          <End Role="zakaz" Type="Self.zakaz" Multiplicity="1" />
+          <End Role="jurnal_zakazovs" Type="Self.jurnal_zakazovs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zakaz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jurnal_zakazovs">
+              <PropertyRef Name="id_zakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_postavki_postavshik">
+          <End Role="postavshik" Type="Self.postavshik" Multiplicity="1" />
+          <End Role="postavki" Type="Self.postavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postavshik">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="postavki">
+              <PropertyRef Name="id_postavshik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zakaz_prodaves">
+          <End Role="prodaves" Type="Self.prodaves" Multiplicity="1" />
+          <End Role="zakaz" Type="Self.zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prodaves">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="zakaz">
+              <PropertyRef Name="id_prodaves" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clothes_type_clothes">
+          <End Role="type_toys" Type="Self.type_toys" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_type_toys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToysEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="brends" EntityType="Self.brends" />
+          <EntitySet Name="categories" EntityType="Self.categories" />
+          <EntitySet Name="clients" EntityType="Self.clients" />
+          <EntitySet Name="Jurnal_postavok" EntityType="Self.Jurnal_postavok" />
+          <EntitySet Name="jurnal_zakazovs" EntityType="Self.jurnal_zakazovs" />
+          <EntitySet Name="postavki" EntityType="Self.postavki" />
+          <EntitySet Name="postavshik" EntityType="Self.postavshik" />
+          <EntitySet Name="prodaves" EntityType="Self.prodaves" />
+          <EntitySet Name="toys" EntityType="Self.toys" />
+          <EntitySet Name="type_toys" EntityType="Self.type_toys" />
+          <EntitySet Name="zakaz" EntityType="Self.zakaz" />
+          <AssociationSet Name="FK_clothes_brends" Association="Self.FK_clothes_brends">
+            <End Role="brends" EntitySet="brends" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clothes_categories" Association="Self.FK_clothes_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zakaz_clients" Association="Self.FK_zakaz_clients">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="zakaz" EntitySet="zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jurnal_postavok_clothes" Association="Self.FK_Jurnal_postavok_clothes">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="Jurnal_postavok" EntitySet="Jurnal_postavok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jurnal_postavok_postavki" Association="Self.FK_Jurnal_postavok_postavki">
+            <End Role="postavki" EntitySet="postavki" />
+            <End Role="Jurnal_postavok" EntitySet="Jurnal_postavok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jurnal_zakazovs_clothes" Association="Self.FK_jurnal_zakazovs_clothes">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="jurnal_zakazovs" EntitySet="jurnal_zakazovs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jurnal_zakazovs_zakaz" Association="Self.FK_jurnal_zakazovs_zakaz">
+            <End Role="zakaz" EntitySet="zakaz" />
+            <End Role="jurnal_zakazovs" EntitySet="jurnal_zakazovs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_postavki_postavshik" Association="Self.FK_postavki_postavshik">
+            <End Role="postavshik" EntitySet="postavshik" />
+            <End Role="postavki" EntitySet="postavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zakaz_prodaves" Association="Self.FK_zakaz_prodaves">
+            <End Role="prodaves" EntitySet="prodaves" />
+            <End Role="zakaz" EntitySet="zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clothes_type_clothes" Association="Self.FK_clothes_type_clothes">
+            <End Role="type_toys" EntitySet="type_toys" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <EntitySet Name="ToysPhoto" EntityType="ToysModel.ToysPhoto" />
+          <AssociationSet Name="FK_ToysPhoto_toys" Association="ToysModel.FK_ToysPhoto_toys">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="ToysPhoto" EntitySet="ToysPhoto" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ToysPhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToysID" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="toys" Relationship="ToysModel.FK_ToysPhoto_toys" FromRole="ToysPhoto" ToRole="toys" />
+        </EntityType>
+        <Association Name="FK_ToysPhoto_toys">
+          <End Type="ToysModel.toys" Role="toys" Multiplicity="0..1" />
+          <End Type="ToysModel.ToysPhoto" Role="ToysPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ToysPhoto">
+              <PropertyRef Name="ToysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ToysModelContainer" CdmEntityContainer="ToysEntities">
+          <EntitySetMapping Name="brends">
+            <EntityTypeMapping TypeName="ToysModel.brends">
+              <MappingFragment StoreEntitySet="brends">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="ToysModel.categories">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="ToysModel.clients">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jurnal_postavok">
+            <EntityTypeMapping TypeName="ToysModel.Jurnal_postavok">
+              <MappingFragment StoreEntitySet="Jurnal_postavok">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_postavki" ColumnName="id_postavki" />
+                <ScalarProperty Name="id_toys" ColumnName="id_toys" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jurnal_zakazovs">
+            <EntityTypeMapping TypeName="ToysModel.jurnal_zakazovs">
+              <MappingFragment StoreEntitySet="jurnal_zakazovs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_zakaz" ColumnName="id_zakaz" />
+                <ScalarProperty Name="id_toys" ColumnName="id_toys" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="postavki">
+            <EntityTypeMapping TypeName="ToysModel.postavki">
+              <MappingFragment StoreEntitySet="postavki">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_postavshik" ColumnName="id_postavshik" />
+                <ScalarProperty Name="date_postavki" ColumnName="date_postavki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="postavshik">
+            <EntityTypeMapping TypeName="ToysModel.postavshik">
+              <MappingFragment StoreEntitySet="postavshik">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prodaves">
+            <EntityTypeMapping TypeName="ToysModel.prodaves">
+              <MappingFragment StoreEntitySet="prodaves">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="toys">
+            <EntityTypeMapping TypeName="ToysModel.toys">
+              <MappingFragment StoreEntitySet="toys">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="id_type_toys" ColumnName="id_type_toys" />
+                <ScalarProperty Name="id_brends" ColumnName="id_brends" />
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_toys">
+            <EntityTypeMapping TypeName="ToysModel.type_toys">
+              <MappingFragment StoreEntitySet="type_toys">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zakaz">
+            <EntityTypeMapping TypeName="ToysModel.zakaz">
+              <MappingFragment StoreEntitySet="zakaz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_pokupki" ColumnName="date_pokupki" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="id_prodaves" ColumnName="id_prodaves" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToysPhoto">
+            <EntityTypeMapping TypeName="ToysModel.ToysPhoto">
+              <MappingFragment StoreEntitySet="ToysPhoto">
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="ToysID" ColumnName="ToysID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

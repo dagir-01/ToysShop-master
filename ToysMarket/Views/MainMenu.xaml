@@ -1,0 +1,51 @@
+﻿<Window x:Class="ToysMarket.Views.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToysMarket.Views"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="400" Width="350" Background="Transparent">
+    <Grid VerticalAlignment="Stretch" Margin="0,0,-1,0" >
+        <Ellipse x:Name="ellipse" HorizontalAlignment="Left" Height="50" Margin="18,9,0,0" VerticalAlignment="Top" Width="50">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/ToysMarket;component/Profile/3.jpg" Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <TextBlock Text="DashBoard" Foreground="White" HorizontalAlignment="Center" Margin="90,16,75,315" Width="178" FontSize="24"/>
+        <Button x:Name="button" Content="Toys" Foreground="White" HorizontalAlignment="Left" Margin="18,64,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FF131313" Height="40" Width="232"/>
+        <Ellipse HorizontalAlignment="Left"   Height="30" Margin="25,69,0,0" VerticalAlignment="Top" Width="30">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/ToysMarket;component/Profile/Toys.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Button Content="Clients" Foreground="White" HorizontalAlignment="Left" Margin="18,109,0,0" VerticalAlignment="Top" Width="232" Click="Button_Click_1" Background="#FF131313" Height="40" ForceCursor="True"/>
+        <Ellipse HorizontalAlignment="Left" Height="30" Margin="25,114,0,0" VerticalAlignment="Top" Width="30">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/ToysMarket;component/Profile/Clients.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <Button Content="Providers" Foreground="White" HorizontalAlignment="Left" Margin="18,154,0,0" VerticalAlignment="Top" Width="232" Click="Button_Click_2" Background="#FF131313" Height="40"/>
+        <Ellipse HorizontalAlignment="Left" Height="30" Margin="25,159,0,0" VerticalAlignment="Top" Width="30">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/ToysMarket;component/Profile/Provides.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <Button Content="Sellers" Foreground="White" HorizontalAlignment="Left" Margin="18,199,0,0" VerticalAlignment="Top" Width="232" Click="Button_Click_3" Background="#FF131313" Height="40"/>
+        <Ellipse HorizontalAlignment="Left" Height="30" Margin="25,204,0,0" VerticalAlignment="Top" Width="30">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/ToysMarket;component/Profile/Seller.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <Button Content="Sellers" Foreground="White" HorizontalAlignment="Left" Margin="18,319,0,0" VerticalAlignment="Top" Width="232" Click="Button_Click_4" Background="#FF131313" Height="40"/>
+        <Ellipse HorizontalAlignment="Left" Height="30" Margin="25,324,0,0" VerticalAlignment="Top" Width="30">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/ToysMarket;component/Profile/Logout.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+
+    </Grid>
+</Window>
