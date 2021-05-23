@@ -4,18 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="504c4a42fc1f407ea603d5ddf216fb7f" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="ToysModel.brends" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.categories" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.clients" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.Jurnal_postavok" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.jurnal_zakazovs" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.postavki" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.postavshik" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.prodaves" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.toys" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.type_toys" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ToysModel.zakaz" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+      <Diagram DiagramId="2d5a7d5934854baf9c3d6389da312e93" Name="Diagram1">
+        <EntityTypeShape EntityType="ToysModel.brends" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.categories" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.clients" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.Jurnal_postavok" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.jurnal_zakazovs" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.postavki" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.postavshik" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.prodaves" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.toys" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.ToysPhoto" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.type_toys" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.Users" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysModel.zakaz" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
         <AssociationConnector Association="ToysModel.FK_clothes_brends" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_clothes_categories" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_zakaz_clients" ManuallyRouted="false" />
@@ -26,8 +28,7 @@
         <AssociationConnector Association="ToysModel.FK_postavki_postavshik" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_zakaz_prodaves" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_clothes_type_clothes" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ToysModel.ToysPhoto" Width="1.5" PointX="8" PointY="3.25" />
-        <AssociationConnector Association="ToysModel.FK_ToysPhoto_toys" />
+        <AssociationConnector Association="ToysModel.FK_ToysPhoto_toys" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

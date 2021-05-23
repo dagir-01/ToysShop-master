@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище ToysModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище ToysModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="brends">
           <Key>
             <PropertyRef Name="id" />
@@ -104,6 +104,16 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="zakaz">
           <Key>
@@ -258,6 +268,7 @@
           <EntitySet Name="toys" EntityType="Self.toys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ToysPhoto" EntityType="Self.ToysPhoto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="type_toys" EntityType="Self.type_toys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zakaz" EntityType="Self.zakaz" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_clothes_brends" Association="Self.FK_clothes_brends">
             <End Role="brends" EntitySet="brends" />
@@ -304,7 +315,8 @@
             <End Role="zakaz" EntitySet="zakaz" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ToysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -401,14 +413,23 @@
           <Property Name="id_type_toys" Type="Int32" Nullable="false" />
           <Property Name="id_brends" Type="Int32" Nullable="false" />
           <Property Name="id_category" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="brends" Relationship="Self.FK_clothes_brends" FromRole="toys" ToRole="brends" />
           <NavigationProperty Name="categories" Relationship="Self.FK_clothes_categories" FromRole="toys" ToRole="categories" />
           <NavigationProperty Name="Jurnal_postavok" Relationship="Self.FK_Jurnal_postavok_clothes" FromRole="toys" ToRole="Jurnal_postavok" />
           <NavigationProperty Name="jurnal_zakazovs" Relationship="Self.FK_jurnal_zakazovs_clothes" FromRole="toys" ToRole="jurnal_zakazovs" />
           <NavigationProperty Name="type_toys" Relationship="Self.FK_clothes_type_clothes" FromRole="toys" ToRole="type_toys" />
-          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ToysPhoto" Relationship="ToysModel.FK_ToysPhoto_toys" FromRole="toys" ToRole="ToysPhoto" />
+          <NavigationProperty Name="ToysPhoto" Relationship="Self.FK_ToysPhoto_toys" FromRole="toys" ToRole="ToysPhoto" />
+        </EntityType>
+        <EntityType Name="ToysPhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToysID" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="toys" Relationship="Self.FK_ToysPhoto_toys" FromRole="ToysPhoto" ToRole="toys" />
         </EntityType>
         <EntityType Name="type_toys">
           <Key>
@@ -417,6 +438,16 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="toys" Relationship="Self.FK_clothes_type_clothes" FromRole="type_toys" ToRole="toys" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="zakaz">
           <Key>
@@ -550,6 +581,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ToysPhoto_toys">
+          <End Role="toys" Type="Self.toys" Multiplicity="1" />
+          <End Role="ToysPhoto" Type="Self.ToysPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ToysPhoto">
+              <PropertyRef Name="ToysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ToysEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="brends" EntityType="Self.brends" />
           <EntitySet Name="categories" EntityType="Self.categories" />
@@ -560,7 +603,9 @@
           <EntitySet Name="postavshik" EntityType="Self.postavshik" />
           <EntitySet Name="prodaves" EntityType="Self.prodaves" />
           <EntitySet Name="toys" EntityType="Self.toys" />
+          <EntitySet Name="ToysPhoto" EntityType="Self.ToysPhoto" />
           <EntitySet Name="type_toys" EntityType="Self.type_toys" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="zakaz" EntityType="Self.zakaz" />
           <AssociationSet Name="FK_clothes_brends" Association="Self.FK_clothes_brends">
             <End Role="brends" EntitySet="brends" />
@@ -602,33 +647,11 @@
             <End Role="type_toys" EntitySet="type_toys" />
             <End Role="toys" EntitySet="toys" />
           </AssociationSet>
-          <EntitySet Name="ToysPhoto" EntityType="ToysModel.ToysPhoto" />
-          <AssociationSet Name="FK_ToysPhoto_toys" Association="ToysModel.FK_ToysPhoto_toys">
+          <AssociationSet Name="FK_ToysPhoto_toys" Association="Self.FK_ToysPhoto_toys">
             <End Role="toys" EntitySet="toys" />
             <End Role="ToysPhoto" EntitySet="ToysPhoto" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="ToysPhoto">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ToysID" Type="Int32" Nullable="false" />
-          <Property Name="PhotoPath" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="toys" Relationship="ToysModel.FK_ToysPhoto_toys" FromRole="ToysPhoto" ToRole="toys" />
-        </EntityType>
-        <Association Name="FK_ToysPhoto_toys">
-          <End Type="ToysModel.toys" Role="toys" Multiplicity="0..1" />
-          <End Type="ToysModel.ToysPhoto" Role="ToysPhoto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="toys">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ToysPhoto">
-              <PropertyRef Name="ToysID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -718,14 +741,23 @@
           <EntitySetMapping Name="toys">
             <EntityTypeMapping TypeName="ToysModel.toys">
               <MappingFragment StoreEntitySet="toys">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="id_type_toys" ColumnName="id_type_toys" />
                 <ScalarProperty Name="id_brends" ColumnName="id_brends" />
                 <ScalarProperty Name="id_category" ColumnName="id_category" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToysPhoto">
+            <EntityTypeMapping TypeName="ToysModel.ToysPhoto">
+              <MappingFragment StoreEntitySet="ToysPhoto">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ToysID" ColumnName="ToysID" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -737,6 +769,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ToysModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="zakaz">
             <EntityTypeMapping TypeName="ToysModel.zakaz">
               <MappingFragment StoreEntitySet="zakaz">
@@ -744,15 +787,6 @@
                 <ScalarProperty Name="date_pokupki" ColumnName="date_pokupki" />
                 <ScalarProperty Name="id_client" ColumnName="id_client" />
                 <ScalarProperty Name="id_prodaves" ColumnName="id_prodaves" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ToysPhoto">
-            <EntityTypeMapping TypeName="ToysModel.ToysPhoto">
-              <MappingFragment StoreEntitySet="ToysPhoto">
-                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
-                <ScalarProperty Name="ToysID" ColumnName="ToysID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
