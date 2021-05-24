@@ -6,15 +6,16 @@
         xmlns:local="clr-namespace:ToysMarket" x:Class="ToysMarket.EditClientsWindow"
         xmlns:Models="clr-namespace:ToysMarket.Models"
         mc:Ignorable="d"
-        Title="EditClientsWindow" Height="300" Width="300">
+        Title="EditClientsWindow" Height="350" Width="300">
 
     <Window.Resources>
         <CollectionViewSource x:Key="toysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:clients}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
         
-        <Button Content="Окей" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="182,215,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
+        <Button x:Name="Ok" Content="Окей" HorizontalAlignment="Left" Margin="10,277,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="182,277,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
+        <TextBlock x:Name="Error" Foreground="Red"  HorizontalAlignment="Left" Margin="10,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="38" Width="272"/>
         <Grid x:Name="grid1" DataContext="{StaticResource toysViewSource}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="200" Width="272">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -36,7 +37,7 @@
             <Label Content="Отчество:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
             <TextBox x:Name="patronymicTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding patronymic, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Телефон:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <TextBox x:Name="phoneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="phoneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TextChanged="phoneTextBox_TextChanged"/>
         </Grid>
     </Grid>
 </Window>
