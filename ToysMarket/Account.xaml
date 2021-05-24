@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ToysMarket"
         mc:Ignorable="d"
         Title="Account" Height="500" Width="800" ResizeMode="NoResize">
@@ -40,8 +41,8 @@
 
             <TextBlock
                 Margin="0,30,0,0">
-                Need an account? <Hyperlink 
-                    TextDecorations="None">SignUp</Hyperlink>
+                Нужна учетная запись? <Hyperlink 
+                    TextDecorations="None">Регистрация</Hyperlink>
             </TextBlock>
 
             <Border
@@ -69,6 +70,7 @@
                     x:Name="tUsername"
                     BorderThickness="0"
                     Foreground="Silver"
+                    materialDesign:HintAssist.Hint="Логин"    
                     Grid.Column="1"
                     VerticalAlignment="Center"
                     FontWeight="SemiBold"/>
@@ -99,6 +101,7 @@
                     <PasswordBox
                     x:Name="tPassword"
                     BorderThickness="0"
+                    materialDesign:HintAssist.Hint="Пароль"
                     Foreground="Silver"
                     Grid.Column="1"
                     VerticalAlignment="Center"
