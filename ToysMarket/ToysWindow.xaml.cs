@@ -43,7 +43,7 @@ namespace ToysMarket
                 toy = toy.OrderByDescending(p => p.price);
             }
 
-
+            //ToysLv.ItemsSource = App.ToysEntities.toys.Where(x => x.brends.Contains(Search.Text) || x.fax.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.name.Contains(Search.Text)).ToList();
 
             //toy = toy.Where(x => x.brends(Search.Text) || x.id_category.ToString(Search.Text));
 
