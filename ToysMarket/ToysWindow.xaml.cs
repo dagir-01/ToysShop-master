@@ -45,7 +45,7 @@ namespace ToysMarket
 
 
 
-            //toy = toy.Where(x => x.(Search.Text) || x.id_category.ToString(Search.Text));
+            //toy = toy.Where(x => x.brends(Search.Text) || x.id_category.ToString(Search.Text));
 
             ToysLv.ItemsSource = toy.ToList();
         }
