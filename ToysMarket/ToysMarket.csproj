@@ -113,11 +113,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SellersWindow.xaml">
+    <Page Include="RegistrationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TestWindow.xaml">
+    <Page Include="SellersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,11 +213,11 @@
     <Compile Include="ProvidersWindow.xaml.cs">
       <DependentUpon>ProvidersWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrationWindow.xaml.cs">
+      <DependentUpon>RegistrationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SellersWindow.xaml.cs">
       <DependentUpon>SellersWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TestWindow.xaml.cs">
-      <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToysWindow.xaml.cs">
       <DependentUpon>ToysWindow.xaml</DependentUpon>
@@ -272,6 +272,7 @@
     <None Include="Properties\DataSources\ToysMarket.Models.toys.datasource" />
     <None Include="Properties\DataSources\ToysMarket.Models.ToysEntities.datasource" />
     <None Include="Properties\DataSources\ToysMarket.Models.type_toys.datasource" />
+    <None Include="Properties\DataSources\ToysMarket.Models.Users.datasource" />
     <None Include="Properties\DataSources\ToysMarket.Models.zakaz.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

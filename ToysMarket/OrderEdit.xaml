@@ -24,13 +24,13 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Дата покупки:"/>
-            <TextBox x:Name="date_pokupkiTextBox" Width="120" VerticalAlignment="Center" Text="{Binding date_pokupki, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <DatePicker x:Name="date_pokupkiTextBox" Width="120" VerticalAlignment="Center" Text="{Binding date_pokupki, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Клиент:"/>
             <ComboBox DisplayMemberPath="lastname" SelectedValuePath="id" x:Name="id_clientTextBox" Width="120" VerticalAlignment="Center" SelectedValue="{Binding id_client, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Продавец:"/>
             <ComboBox DisplayMemberPath="lastname" SelectedValuePath="id" x:Name="id_prodavesTextBox" Width="120" VerticalAlignment="Center" SelectedValue="{Binding id_prodaves, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
-        <DataGrid x:Name="jurnal_zakazovsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,10,10,209" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="jurnal_zakazovsDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,10,10,209" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="id_toysColumn" Binding="{Binding toys.name}" Header="Название" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding quantity}" Header="Количество" Width="SizeToHeader"/>
@@ -39,7 +39,6 @@
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="98" Click="Button_Click"/>
         <Button Content="Удалить" HorizontalAlignment="Left" Margin="148,377,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click_1"/>
         <Button Content="Изменить" HorizontalAlignment="Left" Margin="294,377,0,0" VerticalAlignment="Top" Width="98"/>
-        <DatePicker Text="{Binding date_pokupki, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="506,215,0,0" VerticalAlignment="Top" Height="23"/>
 
     </Grid>
 </Window>

@@ -11,8 +11,9 @@
         <CollectionViewSource x:Key="postavshikViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:postavshik}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
+        <TextBlock x:Name="Error" Foreground="Red"  HorizontalAlignment="Left" Margin="10,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="38" Width="272"/>
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="10,10,0,0" HorizontalAlignment="Left" DataContext="{StaticResource postavshikViewSource}" Height="200" Width="272">
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="10,10,0,0" HorizontalAlignment="Left" DataContext="{StaticResource postavshikViewSource}" Height="138" Width="272">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -24,16 +25,16 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Email:"/>
-            <TextBox x:Name="emailTextBox" Width="120" VerticalAlignment="Center" Text="{Binding email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="emailTextBox" TextChanged="phoneTextBox_TextChanged" Width="120" VerticalAlignment="Center" Text="{Binding email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Fax:"/>
-            <TextBox x:Name="faxTextBox" Width="120" VerticalAlignment="Center" Text="{Binding fax, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="faxTextBox" TextChanged="phoneTextBox_TextChanged" Width="120" VerticalAlignment="Center" Text="{Binding fax, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Наименование:"/>
-            <TextBox x:Name="nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="nameTextBox" TextChanged="phoneTextBox_TextChanged" Width="120" VerticalAlignment="Center" Text="{Binding name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Телефон:"/>
-            <TextBox x:Name="phoneTextBox" Width="120" VerticalAlignment="Center" Text="{Binding phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="phoneTextBox" TextChanged="phoneTextBox_TextChanged" Width="120" VerticalAlignment="Center" Text="{Binding phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
 
-        <Button Content="Окей" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+        <Button x:Name="Ok" Content="Окей" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="182,215,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
 
     </Grid>

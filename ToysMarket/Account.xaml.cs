@@ -48,6 +48,9 @@ namespace ToysMarket
             }
 
         }
+
+        public event System.Windows.RoutedEventHandler Click;
+
         private bool VerifyUser(string username, string password)
         {
             con.Open();
@@ -69,6 +72,12 @@ namespace ToysMarket
             {
                 return false;
             }
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationWindow window = new RegistrationWindow();
+            window.ShowDialog();
         }
     }
 }

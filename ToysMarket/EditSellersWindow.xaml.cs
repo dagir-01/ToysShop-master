@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -71,6 +72,63 @@ namespace ToysMarket
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void phoneTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Errors();
+        }
+
+        public void Errors()
+        {
+            if (string.IsNullOrWhiteSpace(addressTextBox.Text))
+            {
+                Error.Text = "Введите  адрес";
+                Ok.IsEnabled = false;
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(firstnameTextBox.Text))
+                {
+                    Error.Text = "Введите имя";
+                    Ok.IsEnabled = false;
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(lastnameTextBox.Text))
+                    {
+                        Error.Text = "Введите фамилию";
+                        Ok.IsEnabled = false;
+                    }
+                    else
+                    {
+                        if (string.IsNullOrWhiteSpace(patronymicTextBox.Text))
+                        {
+                            Error.Text = "Введите отчество";
+                            Ok.IsEnabled = false;
+                        }
+                        else
+                        {
+                            if (string.IsNullOrWhiteSpace(phoneTextBox.Text))
+                            {
+                                Error.Text = "Введите телефон";
+                                Ok.IsEnabled = false;
+                            }
+                            else
+                            {
+                                Error.Text = "";
+                                Ok.IsEnabled = true;
+
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

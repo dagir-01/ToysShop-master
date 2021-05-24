@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -72,5 +73,54 @@ namespace ToysMarket
         {
             Close();
         }
+
+        public void Errors()
+        {
+            if (string.IsNullOrWhiteSpace(emailTextBox.Text))
+            {
+                Error.Text = "Введите  почту";
+                Ok.IsEnabled = false;
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(faxTextBox.Text))
+                {
+                    Error.Text = "Введите факс";
+                    Ok.IsEnabled = false;
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(nameTextBox.Text))
+                    {
+                        Error.Text = "Введите имя";
+                        Ok.IsEnabled = false;
+                    }
+                    else
+                    {
+                        if (string.IsNullOrWhiteSpace(phoneTextBox.Text))
+                        {
+                            Error.Text = "Введите номер";
+                            Ok.IsEnabled = false;
+                        }
+                        else
+                        {          
+                                Error.Text = "";
+                                Ok.IsEnabled = true;
+                        }
+                    }
+                }
+            }
+        }
+        private void phoneTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Errors();
+        }
     }
 }
+
