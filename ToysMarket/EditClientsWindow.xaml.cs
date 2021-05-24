@@ -55,14 +55,14 @@ namespace ToysMarket
                     App.ToysEntities.clients.Add(client);
                     App.ToysEntities.SaveChanges();
                 }
-                MessageBox.Show("Успешно");
+                
                 Close();
 
             }
             catch (Exception)
             {
 
-                MessageBox.Show("Введены неверные данные!");
+                Error.Text = "Ошибка ввода данных. Проверте правильность введеных данных";
             }
 
         }

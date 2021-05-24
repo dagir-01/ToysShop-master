@@ -25,17 +25,18 @@ namespace ToysMarket
         public OrderEdit(zakaz zakaz = null)
         {
             InitializeComponent();
+            _zakaz.jurnal_zakazovs = new List<jurnal_zakazovs>();
             id_clientTextBox.ItemsSource = App.ToysEntities.clients.ToList();
             id_prodavesTextBox.ItemsSource = App.ToysEntities.prodaves.ToList();
             if (zakaz != null)
             {
                 isedit = true;
                 _zakaz = zakaz;
-                _zakaz.jurnal_zakazovs = new List<jurnal_zakazovs>();
+              
             }
 
             grid1.DataContext = _zakaz;
-            jurnal_zakazovsDataGrid.ItemsSource = zakaz.jurnal_zakazovs;
+            jurnal_zakazovsDataGrid.ItemsSource = _zakaz.jurnal_zakazovs;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -51,8 +52,13 @@ namespace ToysMarket
             pick.ShowDialog();
             if (pick.Toy != null)
             {
-
+                _zakaz.jurnal_zakazovs.Add(pick.Toy);
+                jurnal_zakazovsDataGrid.ItemsSource = null;
+                jurnal_zakazovsDataGrid.ItemsSource = _zakaz.jurnal_zakazovs;
             }
+
         }
+
+     
     }
 }

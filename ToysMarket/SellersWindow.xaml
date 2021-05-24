@@ -19,7 +19,7 @@
             <ComboBoxItem>По фамилии</ComboBoxItem>
         </ComboBox>-->
 
-        <DataGrid x:Name="prodavesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,48,10,113" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="prodavesDataGrid" CanUserAddRows="False" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,48,10,113" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="addressColumn" Width="SizeToHeader" Header="address" Binding="{Binding address}"/>
                 <DataGridTextColumn x:Name="firstnameColumn" Width="SizeToHeader" Header="firstname" Binding="{Binding firstname}"/>

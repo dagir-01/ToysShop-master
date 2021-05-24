@@ -13,7 +13,7 @@
     <Grid DataContext="{StaticResource postavshikViewSource}">
         <TextBox Grid.Row="0" FontStretch="Expanded" Margin="10,10,382,369"  x:Name="Search" TextChanged="Search_TextChanged"/>
 
-        <DataGrid x:Name="postavshikDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,61,10,100" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="postavshikDataGrid" CanUserAddRows="False" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,61,10,100" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="emailColumn" Width="SizeToHeader" Header="email" Binding="{Binding email}"/>
                 <DataGridTextColumn x:Name="faxColumn" Width="SizeToHeader" Header="fax" Binding="{Binding fax}"/>

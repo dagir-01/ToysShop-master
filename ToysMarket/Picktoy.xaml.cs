@@ -23,22 +23,23 @@ namespace ToysMarket
         public Picktoy()
         {
             InitializeComponent();
+            toysDataGrid.ItemsSource = App.ToysEntities.toys.ToList();
         }
 
-        public toys Toy { get; set; }
+        public jurnal_zakazovs Toy { get; set; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource toysViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("toysViewSource")));
-            // Загрузите данные, установив свойство CollectionViewSource.Source:
-            // toysViewSource.Source = [универсальный источник данных]
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Toy = toysDataGrid.SelectedItem as toys;
+            var t = toysDataGrid.SelectedItem as toys;
+            Toy = new jurnal_zakazovs { id_toys = t.id, quantity = int.Parse(QuantityTB.Text)}; 
             Close();
         }
+
+  
     }
 }
