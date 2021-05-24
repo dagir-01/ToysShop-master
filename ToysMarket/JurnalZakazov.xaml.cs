@@ -33,7 +33,8 @@ namespace ToysMarket
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            OrderEdit window = new OrderEdit();
+            window.ShowDialog();
         }
     }
 }

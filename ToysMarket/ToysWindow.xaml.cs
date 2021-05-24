@@ -26,6 +26,7 @@ namespace ToysMarket
             InitializeComponent();
             SearchSort_Changed();
             ToysLv.DataContext = App.ToysEntities.toys.ToList();
+            Refresh();
         }
 
         public void SearchSort_Changed()

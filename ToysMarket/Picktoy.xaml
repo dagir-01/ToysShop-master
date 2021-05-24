@@ -12,7 +12,7 @@
     </Window.Resources>
     <Grid DataContext="{StaticResource toysViewSource}">
 
-        <DataGrid x:Name="toysDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,209" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="toysDataGrid" CanUserAddRows="False" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,209" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="id_brendsColumn" Width="SizeToHeader" Header="Бренд" Binding="{Binding brends.name}"/>
                 <DataGridTextColumn x:Name="id_categoryColumn" Width="SizeToHeader" Header="Категория" Binding="{Binding categories.name}"/>

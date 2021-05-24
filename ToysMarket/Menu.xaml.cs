@@ -50,7 +50,7 @@ namespace ToysMarket
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            OrderEdit window4 = new OrderEdit();
+            JurnalZakazov window4 = new JurnalZakazov();
             window4.ShowDialog();
         }
 
@@ -61,6 +61,8 @@ namespace ToysMarket
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
+            Account window5 = new Account();
+            window5.Show();
             Close();
         }
 
