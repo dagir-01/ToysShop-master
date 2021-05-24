@@ -15,10 +15,10 @@
 
         <DataGrid x:Name="postavshikDataGrid" CanUserAddRows="False" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,61,10,100" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="emailColumn" Width="SizeToHeader" Header="email" Binding="{Binding email}"/>
-                <DataGridTextColumn x:Name="faxColumn" Width="SizeToHeader" Header="fax" Binding="{Binding fax}"/>
-                <DataGridTextColumn x:Name="nameColumn" Width="SizeToHeader" Header="name" Binding="{Binding name}"/>
-                <DataGridTextColumn x:Name="phoneColumn" Width="SizeToHeader" Header="phone" Binding="{Binding phone}"/>
+                <DataGridTextColumn x:Name="emailColumn" Width="SizeToHeader" Header="Email" Binding="{Binding email}"/>
+                <DataGridTextColumn x:Name="faxColumn" Width="SizeToHeader" Header="Fax" Binding="{Binding fax}"/>
+                <DataGridTextColumn x:Name="nameColumn" Width="SizeToHeader" Header="Название" Binding="{Binding name}"/>
+                <DataGridTextColumn x:Name="phoneColumn" Width="SizeToHeader" Header="Телефон" Binding="{Binding phone}"/>
             </DataGrid.Columns>
         </DataGrid>
 

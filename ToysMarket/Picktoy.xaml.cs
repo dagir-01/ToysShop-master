@@ -36,10 +36,22 @@ namespace ToysMarket
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var t = toysDataGrid.SelectedItem as toys;
-            Toy = new jurnal_zakazovs { id_toys = t.id, quantity = int.Parse(QuantityTB.Text)}; 
-            Close();
+            if (t != null)
+            {
+                Toy = new jurnal_zakazovs { id_toys = t.id, quantity = int.Parse(QuantityTB.Text) };
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрал!");
+            }  
+          
+       
         }
 
-  
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

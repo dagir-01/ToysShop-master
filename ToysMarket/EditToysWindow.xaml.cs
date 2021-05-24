@@ -82,40 +82,41 @@ namespace ToysMarket
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-            //ofd.Title = "Choose your pic";
-            //if (ofd.ShowDialog() == true)
-            //{
-            //    var file = File.ReadAllBytes(ofd.FileName);
-            //    toy.image = null;
-            //    toy.image = file;
-            //    imageImage.Source = null;
-            //    imageImage.Source = toy.image.ByteToImage();
-            Close();
-            //}
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            ofd.Title = "Choose your pic";
+            if (ofd.ShowDialog() == true)
+            {
+                var file = File.ReadAllBytes(ofd.FileName);
+                toy.image = null;
+                toy.image = file;
+                imageImage.Source = null;
+                imageImage.Source = toy.image.ByteToImage();
+              
+            }
 
         }
-        //public static class ByteImageConverter
-        //{
-        //    public static ImageSource ByteToImage(this byte[] imageData)
-        //    {
-        //        BitmapImage biImg = new BitmapImage();
-        //        MemoryStream ms = new MemoryStream(imageData);
-        //        biImg.BeginInit();
-        //        biImg.StreamSource = ms;
-        //        biImg.EndInit();
-
-        //        ImageSource imgSrc = biImg as ImageSource;
-
-        //        return imgSrc;
-        //    }
-        //}
+      
 
 
 
 
 
 
+    }
+    public static class ByteImageConverter
+    {
+        public static ImageSource ByteToImage(this byte[] imageData)
+        {
+            BitmapImage biImg = new BitmapImage();
+            MemoryStream ms = new MemoryStream(imageData);
+            biImg.BeginInit();
+            biImg.StreamSource = ms;
+            biImg.EndInit();
+
+            ImageSource imgSrc = biImg as ImageSource;
+
+            return imgSrc;
+        }
     }
 }

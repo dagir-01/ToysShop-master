@@ -14,9 +14,9 @@
         <Button x:Name="EditButton" Content="Editbuuuuu" VerticalAlignment="Bottom" Click="EditButton_Click"/>
         <DataGrid x:Name="zakazDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,108" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="date_pokupkiColumn" Width="SizeToHeader" Header="date pokupki" Binding="{Binding date_pokupki}"/>
-                <DataGridTextColumn x:Name="id_clientColumn" Width="SizeToHeader" Header="id client" Binding="{Binding clients.lastname}"/>
-                <DataGridTextColumn x:Name="id_prodavesColumn" Width="SizeToHeader" Header="id prodaves" Binding="{Binding prodaves.lastname}"/>
+                <DataGridTextColumn x:Name="date_pokupkiColumn" Width="SizeToHeader" Header="Дата покупки" Binding="{Binding date_pokupki}"/>
+                <DataGridTextColumn x:Name="id_clientColumn" Width="SizeToHeader" Header="Клиент" Binding="{Binding clients.lastname}"/>
+                <DataGridTextColumn x:Name="id_prodavesColumn" Width="SizeToHeader" Header="Продавец" Binding="{Binding prodaves.lastname}"/>
             </DataGrid.Columns>
         </DataGrid>
 

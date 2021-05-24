@@ -50,7 +50,7 @@
                                 Height="100"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Source="{Binding Image}"
+                                Source="{Binding image}"
                                 Stretch="Uniform" />
                         </Grid>
 
@@ -58,9 +58,9 @@
                             Grid.Column="1"
                             Margin="0,20,0,0"
                             Orientation="Horizontal">
-                            <TextBlock Text="{Binding id_brends.name}"/>
-                            <TextBlock Text="{Binding id_type.name}" />
-                            <TextBlock Text="{Binding id_categories.name}" />
+                            <TextBlock Text="{Binding brends.name}"/>
+                            <TextBlock Text="{Binding type.name}" />
+                            <TextBlock Text="{Binding categories.name}" />
                         </StackPanel>
                         <TextBlock
                             Grid.Row="2"

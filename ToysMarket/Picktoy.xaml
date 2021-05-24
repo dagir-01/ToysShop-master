@@ -14,16 +14,16 @@
 
         <DataGrid x:Name="toysDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,209" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="id_brendsColumn" Width="SizeToHeader" Header="id brends" Binding="{Binding id_brends}"/>
-                <DataGridTextColumn x:Name="id_categoryColumn" Width="SizeToHeader" Header="id category" Binding="{Binding id_category}"/>
-                <DataGridTextColumn x:Name="id_type_toysColumn" Width="SizeToHeader" Header="id type toys" Binding="{Binding id_type_toys}"/>
-                <DataGridTextColumn x:Name="priceColumn" Width="SizeToHeader" Header="price" Binding="{Binding price}"/>
-                <DataGridTextColumn x:Name="quantityColumn" Width="SizeToHeader" Header="quantity" Binding="{Binding quantity}"/>
+                <DataGridTextColumn x:Name="id_brendsColumn" Width="SizeToHeader" Header="Бренд" Binding="{Binding brends.name}"/>
+                <DataGridTextColumn x:Name="id_categoryColumn" Width="SizeToHeader" Header="Категория" Binding="{Binding categories.name}"/>
+                <DataGridTextColumn x:Name="id_type_toysColumn" Width="SizeToHeader" Header="Тип" Binding="{Binding type_toys.name}"/>
+                <DataGridTextColumn x:Name="priceColumn" Width="SizeToHeader" Header="Цена" Binding="{Binding price}"/>
+                <DataGridTextColumn x:Name="quantityColumn" Width="SizeToHeader" Header="Количество" Binding="{Binding quantity}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Выбрать" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="158" Height="41" Click="Button_Click"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" Width="166" Height="41"/>
-        <TextBox x:Name="QuantityTB" HorizontalAlignment="Left" Height="32" Margin="10,299,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="346"  />
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" Width="166" Height="41" Click="Button_Click_1"/>
+        <TextBox x:Name="QuantityTB" HorizontalAlignment="Left" Height="32" Margin="10,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346"  />
 
     </Grid>
 </Window>
