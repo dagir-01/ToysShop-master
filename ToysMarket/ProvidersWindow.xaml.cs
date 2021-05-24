@@ -71,5 +71,10 @@ namespace ToysMarket
                 MessageBox.Show("Не выбран элемент для удаления!");
             }
         }
+
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            postavshikDataGrid.ItemsSource = App.ToysEntities.postavshik.Where(x => x.email.Contains(Search.Text) || x.fax.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.name.Contains(Search.Text)).ToList();
+        }
     }
 }

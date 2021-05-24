@@ -71,5 +71,10 @@ namespace ToysMarket
                 MessageBox.Show("Не выбран элемент для удаления!");
             }
         }
+
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            prodavesDataGrid.ItemsSource = App.ToysEntities.prodaves.Where(x => x.address.Contains(Search.Text) || x.firstname.Contains(Search.Text) || x.lastname.Contains(Search.Text) || x.patronymic.Contains(Search.Text) || x.phone.Contains(Search.Text)).ToList();
+        }
     }
 }

@@ -12,7 +12,9 @@
     </Window.Resources>
     <Grid DataContext="{StaticResource prodavesViewSource}">
 
-        <DataGrid x:Name="prodavesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,151" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <TextBox Grid.Row="0" FontStretch="Expanded" Margin="10,10,382,369"  x:Name="Search" TextChanged="Search_TextChanged"/>
+
+        <DataGrid x:Name="prodavesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,48,10,113" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="addressColumn" Width="SizeToHeader" Header="address" Binding="{Binding address}"/>
                 <DataGridTextColumn x:Name="firstnameColumn" Width="SizeToHeader" Header="firstname" Binding="{Binding firstname}"/>

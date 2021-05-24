@@ -47,7 +47,12 @@ namespace ToysMarket
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var pick = new Picktoy();
+            pick.ShowDialog();
+            if (pick.Toy != null)
+            {
 
+            }
         }
     }
 }

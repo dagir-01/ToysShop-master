@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToysMarket.Models;
 
 namespace ToysMarket
 {
@@ -24,12 +25,20 @@ namespace ToysMarket
             InitializeComponent();
         }
 
+        public toys Toy { get; set; }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
             System.Windows.Data.CollectionViewSource toysViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("toysViewSource")));
             // Загрузите данные, установив свойство CollectionViewSource.Source:
             // toysViewSource.Source = [универсальный источник данных]
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Toy = toysDataGrid.SelectedItem as toys;
+            Close();
         }
     }
 }

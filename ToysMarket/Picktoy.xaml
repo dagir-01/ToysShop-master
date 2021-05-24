@@ -21,7 +21,7 @@
                 <DataGridTextColumn x:Name="quantityColumn" Width="SizeToHeader" Header="quantity" Binding="{Binding quantity}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="158" Height="41"/>
+        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="158" Height="41" Click="Button_Click"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" Width="166" Height="41"/>
 
     </Grid>
