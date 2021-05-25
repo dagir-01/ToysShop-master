@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ToysMarket"
-        mc:Ignorable="d"
-        Title="Account" Height="500" Width="800" ResizeMode="NoResize" WindowStyle="None">
+        mc:Ignorable="d" Height="500" Width="800" ResizeMode="NoResize" Icon="Profile/toyss.png">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -35,7 +34,7 @@
                 <Ellipse.Fill>
                     <ImageBrush
                         Stretch="UniformToFill"
-                        ImageSource="Gambol.jpg"/>
+                        ImageSource="Profile/3.jpg"/>
                 </Ellipse.Fill>
             </Ellipse>
 

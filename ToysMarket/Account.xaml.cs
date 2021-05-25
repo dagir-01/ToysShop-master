@@ -49,7 +49,6 @@ namespace ToysMarket
 
         }
 
-        public event System.Windows.RoutedEventHandler Click;
 
         private bool VerifyUser(string username, string password)
         {
