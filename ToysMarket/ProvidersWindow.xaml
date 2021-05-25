@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ToysMarket"
         xmlns:Models="clr-namespace:ToysMarket.Models" x:Class="ToysMarket.ProvidersWindow"
         mc:Ignorable="d" Height="450" Width="800" Loaded="Window_Loaded" Icon="Profile/toyss.png">
@@ -10,7 +11,7 @@
         <CollectionViewSource x:Key="postavshikViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:postavshik}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource postavshikViewSource}">
-        <TextBox Grid.Row="0" FontStretch="Expanded" Margin="10,10,382,369"  x:Name="Search" TextChanged="Search_TextChanged"/>
+        <TextBox materialDesign:HintAssist.Hint="Поиск" Grid.Row="0" FontStretch="Expanded" Margin="10,10,382,369"  x:Name="Search" TextChanged="Search_TextChanged"/>
         <!--<ComboBox  Grid.Row="0" Margin="415,10,197,369" x:Name="Sort" SelectionChanged="Sort_SelectionChanged" SelectedIndex="0" Height="40">
             <ComboBoxItem >Без сортировки</ComboBoxItem>
             <ComboBoxItem>По фамилии</ComboBoxItem>
