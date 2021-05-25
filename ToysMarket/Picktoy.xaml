@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToysMarket"
         xmlns:Models="clr-namespace:ToysMarket.Models" x:Class="ToysMarket.Picktoy"
-        mc:Ignorable="d"
-        Title="Picktoy" Height="450" Width="800" Loaded="Window_Loaded">
+        mc:Ignorable="d" Height="450" Width="800" Loaded="Window_Loaded" Icon="Profile/toyss.png">
     <Window.Resources>
         <CollectionViewSource x:Key="toysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:toys}, CreateList=True}"/>
     </Window.Resources>

@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToysMarket"
         xmlns:Models="clr-namespace:ToysMarket.Models" x:Class="ToysMarket.JurnalZakazov"
-        mc:Ignorable="d"
-        Title="JurnalZakazov" Height="450" Width="800" Loaded="Window_Loaded">
+        mc:Ignorable="d" Height="450" Width="800" Loaded="Window_Loaded" Icon="Profile/toyss.png">
     <Window.Resources>
         <CollectionViewSource x:Key="zakazViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:zakaz}, CreateList=True}"/>
     </Window.Resources>

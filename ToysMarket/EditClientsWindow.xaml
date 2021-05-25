@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToysMarket" x:Class="ToysMarket.EditClientsWindow"
         xmlns:Models="clr-namespace:ToysMarket.Models"
-        mc:Ignorable="d"
-        Title="EditClientsWindow" Height="350" Width="300">
+        mc:Ignorable="d" Height="350" Width="300" Icon="Profile/toyss.png">
 
     <Window.Resources>
         <CollectionViewSource x:Key="toysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:clients}, CreateList=True}"/>

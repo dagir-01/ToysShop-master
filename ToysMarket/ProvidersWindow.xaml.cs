@@ -76,5 +76,11 @@ namespace ToysMarket
         {
             postavshikDataGrid.ItemsSource = App.ToysEntities.postavshik.Where(x => x.email.Contains(Search.Text) || x.fax.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.name.Contains(Search.Text)).ToList();
         }
+
+        //private void Sort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+           
+        //}
+
     }
 }

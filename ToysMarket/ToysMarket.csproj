@@ -315,6 +315,7 @@
       <DependentUpon>Toys.edmx</DependentUpon>
       <LastGenOutput>Toys1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Profile\toyss.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

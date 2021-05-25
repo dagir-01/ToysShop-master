@@ -28,6 +28,7 @@ namespace ToysMarket
             ToysLv.DataContext = App.ToysEntities.toys.ToList();
             Refresh();
         }
+ 
 
         public void SearchSort_Changed()
         {
@@ -44,9 +45,11 @@ namespace ToysMarket
                 toy = toy.OrderByDescending(p => p.price);
             }
 
-            //ToysLv.ItemsSource = App.ToysEntities.toys.Where(x => x.brends.Contains(Search.Text) || x.fax.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.name.Contains(Search.Text)).ToList();
+            toy = toy.Where(x => x.name.Contains(Search.Text) || x.brends.name.Contains(Search.Text) || x.categories.name.Contains(Search.Text) || x.type_toys.name.Contains(Search.Text));
 
-            //toy = toy.Where(x => x.brends(Search.Text) || x.id_category.ToString(Search.Text));
+            ToysLv.ItemsSource = App.ToysEntities.toys.Where(x => x.name.Contains(Search.Text) || x.categories.name.Contains(Search.Text) || x.brends.name.Contains(Search.Text) || x.type_toys.name.Contains(Search.Text)).ToList();
+
+
 
             ToysLv.ItemsSource = toy.ToList();
         }
@@ -65,40 +68,40 @@ namespace ToysMarket
             Refresh();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (ToysLv.SelectedItem != null)
-            {
-                toys toy = ToysLv.SelectedItem as toys;
-                EditToysWindow window = new EditToysWindow(toy);
-                window.ShowDialog();
-                ToysLv.DataContext = null;
-                ToysLv.DataContext = App.ToysEntities.toys.ToList();
-                Refresh();
-            }
-            else
-            {
-                MessageBox.Show("Не выбран элемент для изменения!");
-            }
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    if (ToysLv.SelectedItem != null)
+        //    {
+        //        toys toy = ToysLv.SelectedItem as toys;
+        //        EditToysWindow window = new EditToysWindow(toy);
+        //        window.ShowDialog();
+        //        ToysLv.DataContext = null;
+        //        ToysLv.DataContext = App.ToysEntities.toys.ToList();
+        //        Refresh();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Не выбран элемент для изменения!");
+        //    }
 
-        }
+        //}
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            if (ToysLv.SelectedItem != null)
-            {
-                toys toy = ToysLv.SelectedItem as toys;
-                App.ToysEntities.toys.Remove(toy);
-                App.ToysEntities.SaveChanges();
-                ToysLv.DataContext = null;
-                ToysLv.DataContext = App.ToysEntities.toys.ToList();
-                Refresh();
-            }
-            else
-            {
-                MessageBox.Show("Не выбран элемент для удаления!");
-            }
-        }
+        //private void Button_Click_2(object sender, RoutedEventArgs e)
+        //{
+        //    if (ToysLv.SelectedItem != null)
+        //    {
+        //        toys toy = ToysLv.SelectedItem as toys;
+        //        App.ToysEntities.toys.Remove(toy);
+        //        App.ToysEntities.SaveChanges();
+        //        ToysLv.DataContext = null;
+        //        ToysLv.DataContext = App.ToysEntities.toys.ToList();
+        //        Refresh();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Не выбран элемент для удаления!");
+        //    }
+        //}
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -119,9 +122,9 @@ namespace ToysMarket
 
         private void Del_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn)
+            if (sender is Button ed)
             {
-                if (btn.DataContext is toys product)
+                if (ed.DataContext is toys product)
                 {
                     App.ToysEntities.toys.Remove(product);
                     App.ToysEntities.SaveChanges();
@@ -131,13 +134,13 @@ namespace ToysMarket
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            var btn = sender as Button;
-            if (btn == null)
+        {        
+            var ed = sender as Button;
+            if (ed == null)
             {
                 return;
             }
-            var toys = btn.Tag as toys;
+            var toys = ed.Tag as toys;
             if (toys == null)
             {
                 return;
