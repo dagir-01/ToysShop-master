@@ -68,41 +68,6 @@ namespace ToysMarket
             Refresh();
         }
 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    if (ToysLv.SelectedItem != null)
-        //    {
-        //        toys toy = ToysLv.SelectedItem as toys;
-        //        EditToysWindow window = new EditToysWindow(toy);
-        //        window.ShowDialog();
-        //        ToysLv.DataContext = null;
-        //        ToysLv.DataContext = App.ToysEntities.toys.ToList();
-        //        Refresh();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Не выбран элемент для изменения!");
-        //    }
-
-        //}
-
-        //private void Button_Click_2(object sender, RoutedEventArgs e)
-        //{
-        //    if (ToysLv.SelectedItem != null)
-        //    {
-        //        toys toy = ToysLv.SelectedItem as toys;
-        //        App.ToysEntities.toys.Remove(toy);
-        //        App.ToysEntities.SaveChanges();
-        //        ToysLv.DataContext = null;
-        //        ToysLv.DataContext = App.ToysEntities.toys.ToList();
-        //        Refresh();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Не выбран элемент для удаления!");
-        //    }
-        //}
-
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             SearchSort_Changed();

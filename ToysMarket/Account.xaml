@@ -12,9 +12,9 @@
                 <ResourceDictionary Source="/profile/icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <BitmapImage x:Key="Image1" UriSource="/Profile/1.jpeg"/>
-            <BitmapImage x:Key="Image2" UriSource="/Profile/2.jpg"/>
-            <BitmapImage x:Key="Image3" UriSource="/Profile/3.jpg"/>
+            <BitmapImage x:Key="Image1" UriSource="/Profile/001.png"/>
+            <BitmapImage x:Key="Image2" UriSource="/Profile/8.jpg"/>
+            <BitmapImage x:Key="Image3" UriSource="/Profile/55.jpg"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -34,7 +34,7 @@
                 <Ellipse.Fill>
                     <ImageBrush
                         Stretch="UniformToFill"
-                        ImageSource="Profile/3.jpg"/>
+                        ImageSource="Profile/toyss.png"/>
                 </Ellipse.Fill>
             </Ellipse>
 
@@ -117,8 +117,7 @@
                 Height="50" Click="enter_Click"/>
         </StackPanel>
         <Image
-            Source="{StaticResource Image1}"
-            Stretch="UniformToFill">
+            Source="{StaticResource Image1}" Stretch="UniformToFill">
             <Image.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
                     <BeginStoryboard>

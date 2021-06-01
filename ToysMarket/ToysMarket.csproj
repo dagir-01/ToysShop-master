@@ -301,7 +301,6 @@
     <Resource Include="Profile\1.jpeg" />
     <Resource Include="Profile\2.jpg" />
     <Resource Include="Gambol.jpg" />
-    <Resource Include="Profile\Gambol.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EditsForm\" />
@@ -318,7 +317,10 @@
       <DependentUpon>Toys.edmx</DependentUpon>
       <LastGenOutput>Toys1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Profile\avatar.jpg" />
+    <Resource Include="Profile\55.jpg" />
+    <Resource Include="Profile\001.png" />
+    <Resource Include="Profile\8.jpg" />
+    <Resource Include="Profile\6.jpg" />
     <Resource Include="Profile\toyss.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

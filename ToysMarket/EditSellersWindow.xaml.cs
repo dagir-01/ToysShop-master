@@ -59,7 +59,6 @@ namespace ToysMarket
                     App.ToysEntities.prodaves.Add(prodave1);
                     App.ToysEntities.SaveChanges();
                 }
-                MessageBox.Show("Успешно");
                 Close();
             }
             catch (Exception)

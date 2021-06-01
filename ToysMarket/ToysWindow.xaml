@@ -88,12 +88,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Button
                                     x:Name="Edit"
+                                    Margin="0,0,5,0"
                                     Click="Edit_Click"
                                     Content="Изменить"
                                     Tag="{Binding .}" />
 
                                 <Button
                                     x:Name="Del"
+                                    Margin="0,0,5,0"
                                     Grid.Column="1"
                                     Click="Del_Click"
                                     Content="Удалить" />

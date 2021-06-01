@@ -10,7 +10,7 @@
         <CollectionViewSource x:Key="toysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:toys}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Button Content="Окей" HorizontalAlignment="Left" Margin="10,527,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,527,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="382,527,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
         <Grid x:Name="grid1" DataContext="{StaticResource toysViewSource}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="450" Width="472">
             <Grid.ColumnDefinitions>

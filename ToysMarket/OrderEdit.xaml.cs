@@ -63,5 +63,33 @@ namespace ToysMarket
         {
 
         }
+
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (isedit == false)
+                {
+                    App.ToysEntities.zakaz.Add(_zakaz);
+                    App.ToysEntities.SaveChanges();
+                }
+                else
+                {
+                    App.ToysEntities.SaveChanges();
+                }
+                MessageBox.Show("Успешно");
+                Close();
+            }
+            catch 
+            {
+                MessageBox.Show("Введены неверные данные");
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

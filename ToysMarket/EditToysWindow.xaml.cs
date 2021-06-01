@@ -64,7 +64,6 @@ namespace ToysMarket
                     App.ToysEntities.toys.Add(toy);
                     App.ToysEntities.SaveChanges();
                 }
-                MessageBox.Show("Успешно");
                 Close();
             }
             catch (Exception)

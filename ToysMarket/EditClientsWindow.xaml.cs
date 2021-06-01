@@ -105,7 +105,7 @@ namespace ToysMarket
                     }
                     else
                     {
-                        if (string.IsNullOrWhiteSpace(patronymicTextBox.Text))
+                        if (string.IsNullOrWhiteSpace(patronymicTextBox.Text)) 
                         {
                             Error.Text = "Введите отчество";
                             Ok.IsEnabled = false;

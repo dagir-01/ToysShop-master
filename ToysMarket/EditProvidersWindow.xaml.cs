@@ -59,7 +59,6 @@ namespace ToysMarket
                     App.ToysEntities.postavshik.Add(postavshik1);
                     App.ToysEntities.SaveChanges();
                 }
-                MessageBox.Show("Успешно");
                 Close();
             }
             catch (Exception)

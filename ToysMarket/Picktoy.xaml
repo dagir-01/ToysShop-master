@@ -11,19 +11,26 @@
         <CollectionViewSource x:Key="toysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:toys}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource toysViewSource}">
-
-        <DataGrid x:Name="toysDataGrid" CanUserAddRows="False" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,209" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="id_brendsColumn" Width="SizeToHeader" Header="Бренд" Binding="{Binding brends.name}"/>
-                <DataGridTextColumn x:Name="id_categoryColumn" Width="SizeToHeader" Header="Категория" Binding="{Binding categories.name}"/>
-                <DataGridTextColumn x:Name="id_type_toysColumn" Width="SizeToHeader" Header="Тип" Binding="{Binding type_toys.name}"/>
-                <DataGridTextColumn x:Name="priceColumn" Width="SizeToHeader" Header="Цена" Binding="{Binding price}"/>
-                <DataGridTextColumn x:Name="quantityColumn" Width="SizeToHeader" Header="Количество" Binding="{Binding quantity}"/>
-            </DataGrid.Columns>
-        </DataGrid>
         <Button Content="Выбрать" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="158" Height="41" Click="Button_Click"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" Width="166" Height="41" Click="Button_Click_1"/>
         <TextBox materialDesign:HintAssist.Hint="Количество" x:Name="QuantityTB" HorizontalAlignment="Left" Height="32" Margin="10,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346"  />
+        <DataGrid x:Name="toysDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,10,10,125" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="id_brendsColumn" Binding="{Binding brends.name}" Header="id brends" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="id_categoryColumn" Binding="{Binding categories.name}" Header="id category" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="id_type_toysColumn"  Binding="{Binding type_toys.name}" Header="id type toys" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="imageColumn" Header="image" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding image}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding name}" Header="name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="priceColumn" Binding="{Binding price}" Header="price" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding quantity}" Header="quantity" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
