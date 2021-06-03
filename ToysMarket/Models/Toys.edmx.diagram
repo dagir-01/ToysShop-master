@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2d5a7d5934854baf9c3d6389da312e93" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="e5ee2f2050744efbaf892cf038831b72" Name="Diagram1">
         <EntityTypeShape EntityType="ToysModel.brends" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ToysModel.categories" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ToysModel.clients" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
@@ -29,6 +29,7 @@
         <AssociationConnector Association="ToysModel.FK_zakaz_prodaves" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_clothes_type_clothes" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_ToysPhoto_toys" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_jurnal_zakazovs_toys" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

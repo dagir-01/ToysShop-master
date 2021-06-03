@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ToysModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ToysModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="brends">
           <Key>
             <PropertyRef Name="id" />
@@ -54,7 +54,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_postavshik" Type="int" Nullable="false" />
-          <Property Name="date_postavki" Type="datetime" Nullable="false" />
+          <Property Name="date_postavki" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="postavshik">
           <Key>
@@ -76,6 +76,7 @@
           <Property Name="patronymic" Type="nvarchar(max)" />
           <Property Name="address" Type="nvarchar(max)" />
           <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_role" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="toys">
           <Key>
@@ -120,59 +121,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="date_pokupki" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date_pokupki" Type="date" Nullable="false" />
           <Property Name="id_client" Type="int" />
           <Property Name="id_prodaves" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_clothes_brends">
-          <End Role="brends" Type="Self.brends" Multiplicity="1" />
-          <End Role="toys" Type="Self.toys" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="brends">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="toys">
-              <PropertyRef Name="id_brends" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_clothes_categories">
-          <End Role="categories" Type="Self.categories" Multiplicity="1" />
-          <End Role="toys" Type="Self.toys" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="categories">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="toys">
-              <PropertyRef Name="id_category" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_clothes_type_clothes">
-          <End Role="type_toys" Type="Self.type_toys" Multiplicity="1" />
-          <End Role="toys" Type="Self.toys" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="type_toys">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="toys">
-              <PropertyRef Name="id_type_toys" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Jurnal_postavok_clothes">
-          <End Role="toys" Type="Self.toys" Multiplicity="1" />
-          <End Role="Jurnal_postavok" Type="Self.Jurnal_postavok" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="toys">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Jurnal_postavok">
-              <PropertyRef Name="id_toys" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Jurnal_postavok_postavki">
+        <Association Name="FK_Jurnal_postavok_postavki1">
           <End Role="postavki" Type="Self.postavki" Multiplicity="1" />
           <End Role="Jurnal_postavok" Type="Self.Jurnal_postavok" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +137,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_jurnal_zakazovs_clothes">
+        <Association Name="FK_Jurnal_postavok_toys">
+          <End Role="toys" Type="Self.toys" Multiplicity="1" />
+          <End Role="Jurnal_postavok" Type="Self.Jurnal_postavok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Jurnal_postavok">
+              <PropertyRef Name="id_toys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jurnal_zakazovs_toys">
           <End Role="toys" Type="Self.toys" Multiplicity="1" />
           <End Role="jurnal_zakazovs" Type="Self.jurnal_zakazovs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,11 +157,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="jurnal_zakazovs">
-              <PropertyRef Name="id_zakaz" />
+              <PropertyRef Name="id_toys" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_jurnal_zakazovs_zakaz">
+        <Association Name="FK_jurnal_zakazovs_zakaz1">
           <End Role="zakaz" Type="Self.zakaz" Multiplicity="1" />
           <End Role="jurnal_zakazovs" Type="Self.jurnal_zakazovs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -217,6 +182,42 @@
             </Principal>
             <Dependent Role="postavki">
               <PropertyRef Name="id_postavshik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_toys_brends">
+          <End Role="brends" Type="Self.brends" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brends">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_brends" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_toys_categories">
+          <End Role="categories" Type="Self.categories" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_toys_type_toys">
+          <End Role="type_toys" Type="Self.type_toys" Multiplicity="1" />
+          <End Role="toys" Type="Self.toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="toys">
+              <PropertyRef Name="id_type_toys" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -270,37 +271,37 @@
           <EntitySet Name="type_toys" EntityType="Self.type_toys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zakaz" EntityType="Self.zakaz" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_clothes_brends" Association="Self.FK_clothes_brends">
-            <End Role="brends" EntitySet="brends" />
-            <End Role="toys" EntitySet="toys" />
-          </AssociationSet>
-          <AssociationSet Name="FK_clothes_categories" Association="Self.FK_clothes_categories">
-            <End Role="categories" EntitySet="categories" />
-            <End Role="toys" EntitySet="toys" />
-          </AssociationSet>
-          <AssociationSet Name="FK_clothes_type_clothes" Association="Self.FK_clothes_type_clothes">
-            <End Role="type_toys" EntitySet="type_toys" />
-            <End Role="toys" EntitySet="toys" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Jurnal_postavok_clothes" Association="Self.FK_Jurnal_postavok_clothes">
-            <End Role="toys" EntitySet="toys" />
-            <End Role="Jurnal_postavok" EntitySet="Jurnal_postavok" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Jurnal_postavok_postavki" Association="Self.FK_Jurnal_postavok_postavki">
+          <AssociationSet Name="FK_Jurnal_postavok_postavki1" Association="Self.FK_Jurnal_postavok_postavki1">
             <End Role="postavki" EntitySet="postavki" />
             <End Role="Jurnal_postavok" EntitySet="Jurnal_postavok" />
           </AssociationSet>
-          <AssociationSet Name="FK_jurnal_zakazovs_clothes" Association="Self.FK_jurnal_zakazovs_clothes">
+          <AssociationSet Name="FK_Jurnal_postavok_toys" Association="Self.FK_Jurnal_postavok_toys">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="Jurnal_postavok" EntitySet="Jurnal_postavok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jurnal_zakazovs_toys" Association="Self.FK_jurnal_zakazovs_toys">
             <End Role="toys" EntitySet="toys" />
             <End Role="jurnal_zakazovs" EntitySet="jurnal_zakazovs" />
           </AssociationSet>
-          <AssociationSet Name="FK_jurnal_zakazovs_zakaz" Association="Self.FK_jurnal_zakazovs_zakaz">
+          <AssociationSet Name="FK_jurnal_zakazovs_zakaz1" Association="Self.FK_jurnal_zakazovs_zakaz1">
             <End Role="zakaz" EntitySet="zakaz" />
             <End Role="jurnal_zakazovs" EntitySet="jurnal_zakazovs" />
           </AssociationSet>
           <AssociationSet Name="FK_postavki_postavshik" Association="Self.FK_postavki_postavshik">
             <End Role="postavshik" EntitySet="postavshik" />
             <End Role="postavki" EntitySet="postavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_toys_brends" Association="Self.FK_toys_brends">
+            <End Role="brends" EntitySet="brends" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_toys_categories" Association="Self.FK_toys_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="toys" EntitySet="toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_toys_type_toys" Association="Self.FK_toys_type_toys">
+            <End Role="type_toys" EntitySet="type_toys" />
+            <End Role="toys" EntitySet="toys" />
           </AssociationSet>
           <AssociationSet Name="FK_ToysPhoto_toys" Association="Self.FK_ToysPhoto_toys">
             <End Role="toys" EntitySet="toys" />
@@ -315,8 +316,7 @@
             <End Role="zakaz" EntitySet="zakaz" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ToysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -369,6 +369,7 @@
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="toys" Relationship="Self.FK_jurnal_zakazovs_clothes" FromRole="jurnal_zakazovs" ToRole="toys" />
           <NavigationProperty Name="zakaz" Relationship="Self.FK_jurnal_zakazovs_zakaz" FromRole="jurnal_zakazovs" ToRole="zakaz" />
+          <NavigationProperty Name="toys1" Relationship="ToysModel.FK_jurnal_zakazovs_toys" FromRole="jurnal_zakazovs" ToRole="toys" />
         </EntityType>
         <EntityType Name="postavki">
           <Key>
@@ -376,7 +377,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_postavshik" Type="Int32" Nullable="false" />
-          <Property Name="date_postavki" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_postavki" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Jurnal_postavok" Relationship="Self.FK_Jurnal_postavok_postavki" FromRole="postavki" ToRole="Jurnal_postavok" />
           <NavigationProperty Name="postavshik" Relationship="Self.FK_postavki_postavshik" FromRole="postavki" ToRole="postavshik" />
         </EntityType>
@@ -401,6 +402,7 @@
           <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="zakaz" Relationship="Self.FK_zakaz_prodaves" FromRole="prodaves" ToRole="zakaz" />
         </EntityType>
         <EntityType Name="toys">
@@ -421,6 +423,7 @@
           <NavigationProperty Name="jurnal_zakazovs" Relationship="Self.FK_jurnal_zakazovs_clothes" FromRole="toys" ToRole="jurnal_zakazovs" />
           <NavigationProperty Name="type_toys" Relationship="Self.FK_clothes_type_clothes" FromRole="toys" ToRole="type_toys" />
           <NavigationProperty Name="ToysPhoto" Relationship="Self.FK_ToysPhoto_toys" FromRole="toys" ToRole="ToysPhoto" />
+          <NavigationProperty Name="jurnal_zakazovs1" Relationship="ToysModel.FK_jurnal_zakazovs_toys" FromRole="toys" ToRole="jurnal_zakazovs" />
         </EntityType>
         <EntityType Name="ToysPhoto">
           <Key>
@@ -454,7 +457,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="date_pokupki" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_pokupki" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_client" Type="Int32" />
           <Property Name="id_prodaves" Type="Int32" Nullable="false" />
           <NavigationProperty Name="clients" Relationship="Self.FK_zakaz_clients" FromRole="zakaz" ToRole="clients" />
@@ -651,7 +654,23 @@
             <End Role="toys" EntitySet="toys" />
             <End Role="ToysPhoto" EntitySet="ToysPhoto" />
           </AssociationSet>
+          <AssociationSet Name="FK_jurnal_zakazovs_toys" Association="ToysModel.FK_jurnal_zakazovs_toys">
+            <End Role="toys" EntitySet="toys" />
+            <End Role="jurnal_zakazovs" EntitySet="jurnal_zakazovs" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_jurnal_zakazovs_toys">
+          <End Type="ToysModel.toys" Role="toys" Multiplicity="1" />
+          <End Type="ToysModel.jurnal_zakazovs" Role="jurnal_zakazovs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="toys">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jurnal_zakazovs">
+              <PropertyRef Name="id_toys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -735,6 +754,7 @@
                 <ScalarProperty Name="patronymic" ColumnName="patronymic" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -56,7 +56,8 @@ namespace ToysMarket
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-
+            JurnalPostavok window4 = new JurnalPostavok();
+            window4.ShowDialog();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)

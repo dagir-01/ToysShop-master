@@ -16,62 +16,58 @@ using ToysMarket.Models;
 namespace ToysMarket
 {
     /// <summary>
-    /// Логика взаимодействия для OrderEdit.xaml
+    /// Логика взаимодействия для DeliveriesEdit.xaml
     /// </summary>
-    public partial class OrderEdit : Window
+    public partial class DeliveriesEdit : Window
     {
-        zakaz _zakaz = new zakaz();
+        postavki _postavki = new postavki();
         bool isedit = false;
-        public OrderEdit(zakaz zakaz = null)
+        public DeliveriesEdit(postavki postavki = null)
         {
             InitializeComponent();
-            _zakaz.jurnal_zakazovs = new List<jurnal_zakazovs>();
-            id_clientTextBox.ItemsSource = App.ToysEntities.clients.ToList();
-            id_prodavesTextBox.ItemsSource = App.ToysEntities.prodaves.ToList();
-            if (zakaz != null)
+            _postavki.Jurnal_postavok = new List<Jurnal_postavok>();
+            id_postavshikTextBox.ItemsSource = App.ToysEntities.postavshik.ToList();
+            if (postavki != null)
             {
                 isedit = true;
-                _zakaz = zakaz;
-              
+                _postavki = postavki;
+
             }
 
-            grid1.DataContext = _zakaz;
-            jurnal_zakazovsDataGrid.ItemsSource = _zakaz.jurnal_zakazovs;
+            grid1.DataContext = _postavki;
+            jurnal_postavokDataGrid.ItemsSource = _postavki.Jurnal_postavok;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
 
-
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var pick = new Picktoy();
+            var pick = new Picktoypostavok();
             pick.ShowDialog();
             if (pick.Toy != null)
             {
-                _zakaz.jurnal_zakazovs.Add(pick.Toy);
-                jurnal_zakazovsDataGrid.ItemsSource = null;
-                jurnal_zakazovsDataGrid.ItemsSource = _zakaz.jurnal_zakazovs;
+                _postavki.Jurnal_postavok.Add(pick.Toy);
+                jurnal_postavokDataGrid.ItemsSource = null;
+                jurnal_postavokDataGrid.ItemsSource = _postavki.Jurnal_postavok;
             }
-
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Dell_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
 
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Accept_Click_3(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (isedit == false)
                 {
-                    App.ToysEntities.zakaz.Add(_zakaz);
+                    App.ToysEntities.postavki.Add(_postavki);
                     App.ToysEntities.SaveChanges();
                 }
                 else
@@ -87,9 +83,9 @@ namespace ToysMarket
             }
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void Close_Click_4(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

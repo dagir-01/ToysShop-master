@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DeliveriesEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditClientsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +104,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="JurnalPostavok.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="JurnalZakazov.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Picktoy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Picktoypostavok.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,6 +150,9 @@
     <Compile Include="ClientsWindow.xaml.cs">
       <DependentUpon>ClientsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeliveriesEdit.xaml.cs">
+      <DependentUpon>DeliveriesEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditClientsWindow.xaml.cs">
       <DependentUpon>EditClientsWindow.xaml</DependentUpon>
     </Compile>
@@ -149,6 +164,9 @@
     </Compile>
     <Compile Include="EditToysWindow.xaml.cs">
       <DependentUpon>EditToysWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JurnalPostavok.xaml.cs">
+      <DependentUpon>JurnalPostavok.xaml</DependentUpon>
     </Compile>
     <Compile Include="JurnalZakazov.xaml.cs">
       <DependentUpon>JurnalZakazov.xaml</DependentUpon>
@@ -212,6 +230,9 @@
     </Compile>
     <Compile Include="Picktoy.xaml.cs">
       <DependentUpon>Picktoy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Picktoypostavok.xaml.cs">
+      <DependentUpon>Picktoypostavok.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProvidersWindow.xaml.cs">
       <DependentUpon>ProvidersWindow.xaml</DependentUpon>
@@ -307,6 +328,13 @@
     <Folder Include="Form\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Profile\55.jpg" />
+    <Resource Include="Profile\001.png" />
+    <Resource Include="Profile\8.jpg" />
+    <Resource Include="Profile\6.jpg" />
+    <Resource Include="Profile\toyss.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\Toys.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Toys.edmx</DependentUpon>
@@ -317,11 +345,6 @@
       <DependentUpon>Toys.edmx</DependentUpon>
       <LastGenOutput>Toys1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Profile\55.jpg" />
-    <Resource Include="Profile\001.png" />
-    <Resource Include="Profile\8.jpg" />
-    <Resource Include="Profile\6.jpg" />
-    <Resource Include="Profile\toyss.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

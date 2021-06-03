@@ -26,6 +26,7 @@ namespace ToysMarket.Models
         public string patronymic { get; set; }
         public string address { get; set; }
         public string phone { get; set; }
+        public string id_role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<zakaz> zakaz { get; set; }

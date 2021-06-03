@@ -21,5 +21,6 @@ namespace ToysMarket.Models
     
         public virtual toys toys { get; set; }
         public virtual zakaz zakaz { get; set; }
+        public virtual toys toys1 { get; set; }
     }
 }

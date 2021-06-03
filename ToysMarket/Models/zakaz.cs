@@ -21,7 +21,7 @@ namespace ToysMarket.Models
         }
     
         public int id { get; set; }
-        public string date_pokupki { get; set; }
+        public System.DateTime date_pokupki { get; set; }
         public Nullable<int> id_client { get; set; }
         public int id_prodaves { get; set; }
     

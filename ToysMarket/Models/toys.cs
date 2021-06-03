@@ -20,6 +20,7 @@ namespace ToysMarket.Models
             this.Jurnal_postavok = new HashSet<Jurnal_postavok>();
             this.jurnal_zakazovs = new HashSet<jurnal_zakazovs>();
             this.ToysPhoto = new HashSet<ToysPhoto>();
+            this.jurnal_zakazovs1 = new HashSet<jurnal_zakazovs>();
         }
     
         public int id { get; set; }
@@ -40,5 +41,7 @@ namespace ToysMarket.Models
         public virtual type_toys type_toys { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ToysPhoto> ToysPhoto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<jurnal_zakazovs> jurnal_zakazovs1 { get; set; }
     }
 }

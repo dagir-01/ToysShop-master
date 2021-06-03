@@ -1,0 +1,37 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToysMarket"
+        xmlns:Models="clr-namespace:ToysMarket.Models" x:Class="ToysMarket.Picktoypostavok"
+        mc:Ignorable="d"
+        Title="Picktoypostavok" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="toysViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:toys}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource toysViewSource}">
+        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="158" Height="41" Click="Accept_Click"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" Width="166" Height="41" Click="Close_Click"/>
+        <TextBox materialDesign:HintAssist.Hint="Количество" x:Name="QuantityTB" HorizontalAlignment="Left" Height="32" Margin="10,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346"  />
+        <DataGrid x:Name="toysDataGrid" IsReadOnly="True" CanUserAddRows="False" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,132" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="id_brendsColumn" Width="SizeToHeader" Header="id brends" Binding="{Binding brends.name}"/>
+                <DataGridTextColumn x:Name="id_categoryColumn" Width="SizeToHeader" Header="id category" Binding="{Binding categories.name}"/>
+                <DataGridTextColumn x:Name="id_type_toysColumn" Width="SizeToHeader" Header="id type toys" Binding="{Binding type_toys.name}"/>
+                <DataGridTemplateColumn x:Name="imageColumn" Width="SizeToHeader" Header="image">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding image}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="nameColumn" Width="SizeToHeader" Header="name" Binding="{Binding name}"/>
+                <DataGridTextColumn x:Name="priceColumn" Width="SizeToHeader" Header="price" Binding="{Binding price}"/>
+                <DataGridTextColumn x:Name="quantityColumn" Width="SizeToHeader" Header="quantity" Binding="{Binding quantity}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
