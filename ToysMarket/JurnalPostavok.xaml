@@ -13,7 +13,7 @@
     </Window.Resources>
     <Grid DataContext="{StaticResource jurnal_postavokViewSource}">
         <Button x:Name="EditButton" Content="Editbuuuuu" VerticalAlignment="Bottom" Click="EditButton_Click"/>
-        <DataGrid x:Name="postavkiDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource postavkiViewSource}}" Margin="10,10,10,173" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="postavkiDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource postavkiViewSource}}" Margin="10,10,10,173" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="date_postavkiColumn" Binding="{Binding date_postavki}" Header="date postavki" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="id_postavshikColumn" Binding="{Binding postavshik.name}" Header="id postavshik" Width="SizeToHeader"/>

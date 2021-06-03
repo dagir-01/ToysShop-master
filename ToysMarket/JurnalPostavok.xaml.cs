@@ -34,6 +34,8 @@ namespace ToysMarket
         {
             DeliveriesEdit window = new DeliveriesEdit();
             window.ShowDialog();
+            postavkiDataGrid.ItemsSource = null;
+            postavkiDataGrid.ItemsSource = App.ToysEntities.postavki.ToList();
         }
     }
 }

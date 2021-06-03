@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e5ee2f2050744efbaf892cf038831b72" Name="Diagram1">
+      <Diagram DiagramId="1a7219116486430f9bba62404e0f69a9" Name="Diagram1">
         <EntityTypeShape EntityType="ToysModel.brends" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ToysModel.categories" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ToysModel.clients" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
@@ -18,18 +18,17 @@
         <EntityTypeShape EntityType="ToysModel.type_toys" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ToysModel.Users" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ToysModel.zakaz" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
-        <AssociationConnector Association="ToysModel.FK_clothes_brends" ManuallyRouted="false" />
-        <AssociationConnector Association="ToysModel.FK_clothes_categories" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_toys_brends" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_toys_categories" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_zakaz_clients" ManuallyRouted="false" />
-        <AssociationConnector Association="ToysModel.FK_Jurnal_postavok_clothes" ManuallyRouted="false" />
-        <AssociationConnector Association="ToysModel.FK_Jurnal_postavok_postavki" ManuallyRouted="false" />
-        <AssociationConnector Association="ToysModel.FK_jurnal_zakazovs_clothes" ManuallyRouted="false" />
-        <AssociationConnector Association="ToysModel.FK_jurnal_zakazovs_zakaz" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_Jurnal_postavok_postavki1" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_Jurnal_postavok_toys" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_jurnal_zakazovs_toys" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_jurnal_zakazovs_zakaz1" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_postavki_postavshik" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_zakaz_prodaves" ManuallyRouted="false" />
-        <AssociationConnector Association="ToysModel.FK_clothes_type_clothes" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysModel.FK_toys_type_toys" ManuallyRouted="false" />
         <AssociationConnector Association="ToysModel.FK_ToysPhoto_toys" ManuallyRouted="false" />
-        <AssociationConnector Association="ToysModel.FK_jurnal_zakazovs_toys" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -69,6 +69,7 @@ namespace ToysMarket
                 {
                     App.ToysEntities.postavki.Add(_postavki);
                     App.ToysEntities.SaveChanges();
+                    
                 }
                 else
                 {
@@ -77,7 +78,7 @@ namespace ToysMarket
                 MessageBox.Show("Успешно");
                 Close();
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Введены неверные данные");
             }

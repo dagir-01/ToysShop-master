@@ -14,6 +14,8 @@ namespace ToysMarket.Models
     
     public partial class postavki
     {
+        public DateTime StartDate { get; } = DateTime.Now;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public postavki()
         {
@@ -22,7 +24,7 @@ namespace ToysMarket.Models
     
         public int id { get; set; }
         public int id_postavshik { get; set; }
-        public System.DateTime date_postavki { get; set; }
+        public System.DateTime date_postavki { get; set; } = DateTime.Now.AddDays(5);
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Jurnal_postavok> Jurnal_postavok { get; set; }

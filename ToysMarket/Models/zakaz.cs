@@ -14,14 +14,18 @@ namespace ToysMarket.Models
     
     public partial class zakaz
     {
+        public DateTime StartDate { get; } = DateTime.Now;
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public zakaz()
         {
             this.jurnal_zakazovs = new HashSet<jurnal_zakazovs>();
         }
+
     
         public int id { get; set; }
-        public System.DateTime date_pokupki { get; set; }
+        public System.DateTime date_pokupki { get; set; } = DateTime.Now.AddDays(5);
         public Nullable<int> id_client { get; set; }
         public int id_prodaves { get; set; }
     

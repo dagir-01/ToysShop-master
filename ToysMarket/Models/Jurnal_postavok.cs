@@ -19,7 +19,7 @@ namespace ToysMarket.Models
         public int id_toys { get; set; }
         public int count { get; set; }
     
-        public virtual toys toys { get; set; }
         public virtual postavki postavki { get; set; }
+        public virtual toys toys { get; set; }
     }
 }
