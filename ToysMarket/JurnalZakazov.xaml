@@ -10,7 +10,7 @@
         <CollectionViewSource x:Key="zakazViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:zakaz}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource zakazViewSource}">
-        <Button x:Name="EditButton" Content="Editbuuuuu" VerticalAlignment="Bottom" Click="EditButton_Click"/>
+        <Button x:Name="EditButton" Content="Добавить" VerticalAlignment="Bottom" Click="EditButton_Click" Margin="10,0,632,10"/>
         <DataGrid x:Name="zakazDataGrid" IsReadOnly="True" CanUserAddRows="False" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,108" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="date_pokupkiColumn" Width="SizeToHeader" Header="Дата покупки" Binding="{Binding date_pokupki}"/>

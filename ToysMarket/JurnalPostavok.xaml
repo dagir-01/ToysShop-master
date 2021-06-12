@@ -12,11 +12,11 @@
         <CollectionViewSource x:Key="postavkiViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:postavki}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource jurnal_postavokViewSource}">
-        <Button x:Name="EditButton" Content="Editbuuuuu" VerticalAlignment="Bottom" Click="EditButton_Click"/>
+        <Button x:Name="EditButton" Content="Добавить" VerticalAlignment="Bottom" Click="EditButton_Click" Margin="10,0,632,10"/>
         <DataGrid x:Name="postavkiDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource postavkiViewSource}}" Margin="10,10,10,173" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="date_postavkiColumn" Binding="{Binding date_postavki}" Header="date postavki" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="id_postavshikColumn" Binding="{Binding postavshik.name}" Header="id postavshik" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="date_postavkiColumn" Binding="{Binding date_postavki}" Header="Дата поставки" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="id_postavshikColumn" Binding="{Binding postavshik.name}" Header="Поставщик" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

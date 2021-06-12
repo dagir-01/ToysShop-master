@@ -58,7 +58,17 @@ namespace ToysMarket
 
         private void Dell_Click_1(object sender, RoutedEventArgs e)
         {
-
+            //MessageBoxResult deletemess = MessageBox.Show("Вы действительно хотите удалить?", "Удаление", MessageBoxButton.YesNo);
+            //if (deletemess == MessageBoxResult.Yes)
+            //{
+            //    var item = jurnal_postavokDataGrid.SelectedItem as JurnalPostavok;
+            //    if (item != null)
+            //    {
+            //        App.ToysEntities.Jurnal_postavok.Remove(item);
+            //        App.ToysEntities.SaveChanges();
+            //        jurnal_postavokDataGrid.DataContext = App.ToysEntities.Jurnal_postavok.ToList();
+            //    }
+            //}
         }
 
         private void Accept_Click_3(object sender, RoutedEventArgs e)

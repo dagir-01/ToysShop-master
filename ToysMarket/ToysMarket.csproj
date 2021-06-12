@@ -323,10 +323,7 @@
     <Resource Include="Profile\2.jpg" />
     <Resource Include="Gambol.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EditsForm\" />
-    <Folder Include="Form\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Profile\55.jpg" />
     <Resource Include="Profile\001.png" />

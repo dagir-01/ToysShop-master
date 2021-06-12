@@ -21,11 +21,11 @@
 
         <DataGrid x:Name="prodavesDataGrid" CanUserAddRows="False" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,48,10,113" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="addressColumn" Width="SizeToHeader" Header="Адрес" Binding="{Binding address}"/>
-                <DataGridTextColumn x:Name="firstnameColumn" Width="SizeToHeader" Header="Имя" Binding="{Binding firstname}"/>
-                <DataGridTextColumn x:Name="lastnameColumn" Width="SizeToHeader" Header="Фамилия" Binding="{Binding lastname}"/>
-                <DataGridTextColumn x:Name="patronymicColumn" Width="SizeToHeader" Header="Отчество" Binding="{Binding patronymic}"/>
-                <DataGridTextColumn x:Name="phoneColumn" Width="SizeToHeader" Header="Телефон" Binding="{Binding phone}"/>
+                <DataGridTextColumn x:Name="addressColumn" Width="Auto" Header="Адрес" Binding="{Binding address}"/>
+                <DataGridTextColumn x:Name="firstnameColumn" Width="Auto" Header="Имя" Binding="{Binding firstname}"/>
+                <DataGridTextColumn x:Name="lastnameColumn" Width="Auto" Header="Фамилия" Binding="{Binding lastname}"/>
+                <DataGridTextColumn x:Name="patronymicColumn" Width="Auto" Header="Отчество" Binding="{Binding patronymic}"/>
+                <DataGridTextColumn x:Name="phoneColumn" Width="Auto" Header="Телефон" Binding="{Binding phone}"/>
             </DataGrid.Columns>
         </DataGrid>
 
