@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToysMarket"
-        xmlns:Models="clr-namespace:ToysMarket.Models" x:Class="ToysMarket.JurnalPostavok"
+        xmlns:Models="clr-namespace:ToysMarket.Models" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ToysMarket.JurnalPostavok"
         mc:Ignorable="d"
         Title="JurnalPostavok" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
@@ -13,11 +13,18 @@
     </Window.Resources>
     <Grid DataContext="{StaticResource jurnal_postavokViewSource}">
         <Button x:Name="EditButton" Content="Добавить" VerticalAlignment="Bottom" Click="EditButton_Click" Margin="10,0,632,10"/>
-        <DataGrid x:Name="postavkiDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource postavkiViewSource}}" Margin="10,10,10,173" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="postavkiDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource postavkiViewSource}}" Margin="10,10,10,130" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="date_postavkiColumn" Binding="{Binding date_postavki}" Header="Дата поставки" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="date_postavkiColumn" Binding="{Binding date_postavki}" Header="Дата поставки" Width="300"/>
                 <DataGridTextColumn x:Name="id_postavshikColumn" Binding="{Binding postavshik.name}" Header="Поставщик" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Экспорт" HorizontalAlignment="Left" Margin="632,377,0,0" VerticalAlignment="Top" Width="150" Click="Button_Click"/>
+        <DatePicker x:Name="SortirovkaOT"  HorizontalAlignment="Left" Margin="245,309,0,0" VerticalAlignment="Top" Width="150"/>
+        <DatePicker x:Name="SortirobkaDO" HorizontalAlignment="Left" Margin="455,309,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="От:" FontSize="18" HorizontalAlignment="Left" Margin="203,304,0,0" VerticalAlignment="Top" Height="30" Width="37"/>
+        <Label Content="До:" FontSize="18" HorizontalAlignment="Left" Margin="413,303,0,0" VerticalAlignment="Top" Height="31" Width="37"/>
+        <Button x:Name="EditButton_Copy" Content="Редактировать" VerticalAlignment="Bottom" Click="EditButton_Click1" Margin="185,0,457,10"/>
+        <Button x:Name="EditButton_Copy1" Content="Удалить" VerticalAlignment="Bottom" Click="EditButton_Click2" Margin="362,0,280,10"/>
     </Grid>
 </Window>

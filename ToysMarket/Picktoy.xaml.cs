@@ -38,7 +38,12 @@ namespace ToysMarket
             var t = toysDataGrid.SelectedItem as toys;
             if (t != null)
             {
-                Toy = new jurnal_zakazovs { id_toys = t.id, quantity = int.Parse(QuantityTB.Text) };
+                if (int.Parse(QuantityTB.Text) > t.quantity)
+                {
+                    MessageBox.Show("Количество больше, чем есть на складе!");
+                    return;
+                }
+                Toy = new jurnal_zakazovs { id_toys = t.id, quantity = int.Parse(QuantityTB.Text), toys = t };
                 Close();
             }
             else
@@ -52,6 +57,16 @@ namespace ToysMarket
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void QuantityTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void QuantityTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
         }
     }
 }

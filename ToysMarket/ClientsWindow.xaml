@@ -26,6 +26,12 @@
         <Button Content="Добавить" Margin="10,359,657,10" Click="Button_Click" Height="Auto"/>
         <Button Content="Изменить" Margin="140,359,527,10" Click="Button_Click_1" Height="Auto"/>
         <Button Content="Удалить" Margin="270,359,397,10" Click="Button_Click_2" Height="Auto"/>
+        <ComboBox x:Name="Sortirovka" HorizontalAlignment="Left" Margin="438,10,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="Sortirovka_SelectionChanged" Height="36">
+            <ComboBoxItem>Без сортировки</ComboBoxItem>
+            <ComboBoxItem>По имени</ComboBoxItem>
+            <ComboBoxItem>По фамилии</ComboBoxItem>
+            <ComboBoxItem>По отчеству</ComboBoxItem>
+        </ComboBox>
 
     </Grid>
 </Window>

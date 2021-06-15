@@ -37,7 +37,7 @@ namespace ToysMarket
             var t = toysDataGrid.SelectedItem as toys;
             if (t != null)
             {
-                Toy = new Jurnal_postavok { id_toys = t.id, count = int.Parse(QuantityTB.Text) };
+                Toy = new Jurnal_postavok { id_toys = t.id, count = int.Parse(QuantityTB.Text), toys = t };
                 Close();
             }
             else

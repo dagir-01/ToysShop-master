@@ -13,6 +13,7 @@ namespace ToysMarket
     /// </summary>
     public partial class App : Application
     {
+        public static Models.Users User { get; set; } = new Models.Users();
         public static Models.ToysEntities ToysEntities = new Models.ToysEntities();
     }
 }

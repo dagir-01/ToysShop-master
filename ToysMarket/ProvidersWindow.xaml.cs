@@ -72,15 +72,36 @@ namespace ToysMarket
             }
         }
 
-        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        void Method()
         {
-            postavshikDataGrid.ItemsSource = App.ToysEntities.postavshik.Where(x => x.email.Contains(Search.Text) || x.fax.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.name.Contains(Search.Text)).ToList();
+            var cl = App.ToysEntities.postavshik.AsQueryable();
+
+            switch (Sortirovka.SelectedIndex)
+            {
+                case 1:
+                    cl = cl.OrderBy(x => x.name);
+                    break;
+                case 2:
+                    cl = cl.OrderBy(x => x.email);
+                    break;
+            }
+
+            postavshikDataGrid.DataContext = cl.ToList();
+
+            cl = cl.Where(x => x.email.Contains(Search.Text) || x.fax.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.name.Contains(Search.Text));
         }
 
-        //private void Sort_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-           
-        //}
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Method();
+        }
+
+        private void Sortirovka_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Method();
+        }
+
+    
 
     }
 }

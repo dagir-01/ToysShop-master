@@ -38,12 +38,7 @@
                 </Ellipse.Fill>
             </Ellipse>
 
-            <TextBlock x:Name="Clicks"  
-                materialDesign:NavigationRailAssist.FloatingContent="RegistrarionWindow"
-                Margin="0,30,0,0">
-                Нужна учетная запись? <Hyperlink Click="Hyperlink_Click" 
-                    TextDecorations="None">Регистрация</Hyperlink>
-            </TextBlock>
+            
 
             <Border
                 Height="50"

@@ -33,6 +33,31 @@ namespace ToysMarket
             
         }
 
+        void Method()
+        {
+            var cl = App.ToysEntities.clients.AsQueryable();
+
+            switch (Sortirovka.SelectedIndex)
+            {
+                case 1:
+                    cl = cl.OrderBy(x => x.firstname);
+                    break;
+                case 2:
+                    cl = cl.OrderBy(x => x.lastname);
+                    break;
+                case 3:
+                    cl = cl.OrderBy(x => x.patronymic);
+                    break;
+            }
+
+
+
+            cl = cl.Where(x => x.firstname.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.address.Contains(Search.Text) || x.lastname.Contains(Search.Text) || x.patronymic.Contains(Search.Text));
+            
+            clientsDataGrid.DataContext = cl.ToList();
+
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             EditClientsWindow window = new EditClientsWindow();
@@ -76,7 +101,12 @@ namespace ToysMarket
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            clientsDataGrid.ItemsSource = App.ToysEntities.clients.Where(x => x.firstname.Contains(Search.Text) || x.phone.Contains(Search.Text) || x.address.Contains(Search.Text) || x.lastname.Contains(Search.Text) || x.patronymic.Contains(Search.Text)).ToList();
+            Method();
+        }
+
+        private void Sortirovka_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Method();
         }
     }
 }

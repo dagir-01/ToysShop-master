@@ -32,46 +32,35 @@ namespace ToysMarket
 
         private void enter_Click(object sender, RoutedEventArgs e)
         {
-            if (con.State == System.Data.ConnectionState.Open)
+            try
             {
-                con.Close();
-            }
-            if (VerifyUser(tUsername.Text, tPassword.Password))
-            {
-                Menu menu = new Menu();
+                var name = tUsername.Text;
+                var password = tPassword.Password;
+
+                var role = App.ToysEntities.Users.Where(x => x.Username == name && x.Password == password).FirstOrDefault();
+                if (role == null)
+                {
+                    MessageBox.Show("Данного пользователя не существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (role.Status == false)
+                {
+                    MessageBox.Show("Данный пользователь отключен", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                App.User = role;
+                Menu window = new Menu();
+                window.Show();
                 this.Close();
-                menu.ShowDialog();
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Username or password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка подключения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
 
 
-        private bool VerifyUser(string username, string password)
-        {
-            con.Open();
-            com.Connection = con;
-            com.CommandText = "select Status from Users where username='" + username + "' and password='" + password + "'";
-            dr = com.ExecuteReader();
-            if (dr.Read())
-            {
-                if (Convert.ToBoolean(dr["Status"]) == true)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {

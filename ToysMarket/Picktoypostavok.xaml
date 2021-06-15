@@ -17,19 +17,19 @@
         <TextBox materialDesign:HintAssist.Hint="Количество" x:Name="QuantityTB" HorizontalAlignment="Left" Height="32" Margin="10,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346"  />
         <DataGrid x:Name="toysDataGrid" IsReadOnly="True" CanUserAddRows="False" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,132" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="id_brendsColumn" Width="SizeToHeader" Header="id brends" Binding="{Binding brends.name}"/>
-                <DataGridTextColumn x:Name="id_categoryColumn" Width="SizeToHeader" Header="id category" Binding="{Binding categories.name}"/>
-                <DataGridTextColumn x:Name="id_type_toysColumn" Width="SizeToHeader" Header="id type toys" Binding="{Binding type_toys.name}"/>
-                <DataGridTemplateColumn x:Name="imageColumn" Width="SizeToHeader" Header="image">
+                <DataGridTextColumn x:Name="id_brendsColumn" Width="Auto" Header="Бренд" Binding="{Binding brends.name}"/>
+                <DataGridTextColumn x:Name="id_categoryColumn" Width="Auto" Header="Категория" Binding="{Binding categories.name}"/>
+                <DataGridTextColumn x:Name="id_type_toysColumn" Width="Auto" Header="Тип" Binding="{Binding type_toys.name}"/>
+                <DataGridTemplateColumn x:Name="imageColumn" Width="SizeToHeader" Header="Картинка">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding image}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="nameColumn" Width="SizeToHeader" Header="name" Binding="{Binding name}"/>
-                <DataGridTextColumn x:Name="priceColumn" Width="SizeToHeader" Header="price" Binding="{Binding price}"/>
-                <DataGridTextColumn x:Name="quantityColumn" Width="SizeToHeader" Header="quantity" Binding="{Binding quantity}"/>
+                <DataGridTextColumn x:Name="nameColumn" Width="Auto" Header="Наименование" Binding="{Binding name}"/>
+                <DataGridTextColumn x:Name="priceColumn" Width="Auto" Header="Цена" Binding="{Binding price}"/>
+                <DataGridTextColumn x:Name="quantityColumn" Width="Auto" Header="Количество" Binding="{Binding quantity}"/>
             </DataGrid.Columns>
         </DataGrid>
 

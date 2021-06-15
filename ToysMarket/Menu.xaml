@@ -12,57 +12,88 @@
         <Storyboard x:Key="Storyboard3"/>
         <Storyboard x:Key="Storyboard4"/>
     </Window.Resources>
-    <Grid Background="#FF8554B4" >
-        <Button Content="Игрушки"  Foreground="White"  HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="280" Click="Button_Click" Height="33"/>
-        <Button Content="Клиенты"  Foreground="White" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="280" Click="Button_Click_1" Height="33"/>
-        <Button Content="Поставщики"  Foreground="White" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="280" Click="Button_Click_2" Height="33"/>
-        <Button Content="Продавец"  Foreground="White" HorizontalAlignment="Left" Margin="10,194,0,0" VerticalAlignment="Top" Width="280" Click="Button_Click_3" Height="33"/>
-        <Button Content="Заказ"  Foreground="White" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Width="280" Click="Button_Click_6" Height="33"/>
-        <Button Content="Поставки"  Foreground="White" HorizontalAlignment="Left" Margin="10,272,0,0" VerticalAlignment="Top" Width="280" Click="Button_Click_5" Height="33"/>
+    <StackPanel Background="#FF8554B4" >
 
-        <Ellipse HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="57">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/toyss.png" Stretch="UniformToFill"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <TextBlock HorizontalAlignment="Left" Height="40" Margin="76,20,0,0" TextWrapping="Wrap" Text="Меню" VerticalAlignment="Top" Width="224" FontSize="30" FontWeight="Bold"/>
-        <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,79,0,0" VerticalAlignment="Top" Width="25">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/Toys.png" TileMode="Tile"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,276,0,0" VerticalAlignment="Top" Width="25">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/Postavki.png" TileMode="Tile"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,119,0,0" VerticalAlignment="Top" Width="25">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/Clients.png"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,159,0,0" VerticalAlignment="Top" Width="25">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/Provides.png"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,198,0,0" VerticalAlignment="Top" Width="25">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/Seller.png"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,236,0,0" VerticalAlignment="Top" Width="25">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/Zakaz.png"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <Button Content="Выйти"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_4" Margin="10,360,0,0" Height="30" Width="280"/>
-        <Ellipse HorizontalAlignment="Left" Height="26" Margin="15,362,0,0" VerticalAlignment="Top" Width="25">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Profile/Logout.png"/>
-            </Ellipse.Fill>
-        </Ellipse>
+        <Grid>
+            <Ellipse HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="57">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/toyss.png" Stretch="UniformToFill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock HorizontalAlignment="Left" Height="40" Margin="76,20,0,0" TextWrapping="Wrap" Text="Меню" VerticalAlignment="Top" Width="224" FontSize="30" FontWeight="Bold"/>
+        </Grid>
+        
+        <Grid Margin="0,20,0,0">
+            <Button Content="Игрушки"  Foreground="White"   VerticalAlignment="Top" Width="280" Click="Button_Click" Height="33"/>
+            <Ellipse HorizontalAlignment="Left" Margin="15,0,0,0" Height="25"  VerticalAlignment="Center" Width="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/Toys.png" TileMode="Tile"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <Grid  Margin="0,10,0,0" >
+            <Button Content="Клиенты"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="280" Click="Button_Click_1" Height="33"/>
+            <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,0,0,0" VerticalAlignment="Center" Width="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/Postavki.png" TileMode="Tile"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <Grid Margin="0,10,0,0">
+           
+            <Button Content="Поставщики"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="280" Click="Button_Click_2" Height="33"/>
+            <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,0,0,0" VerticalAlignment="Center" Width="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/Clients.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        
+        <Grid Margin="0,10,0,0" x:Name="PRODAVEC" Visibility="Collapsed">
+            <Button Content="Продавец"  Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="280" Click="Button_Click_3" Height="33"/>
+            <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,0,0,0" VerticalAlignment="Center" Width="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/Provides.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <Grid Margin="0,10,0,0">
+            <Button Content="Заказ"  Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="280" Click="Button_Click_6" Height="33"/>
+            <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,0,0,0" VerticalAlignment="Center" Width="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/Seller.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <Grid Margin="0,10,0,0">
+            <Button Content="Поставки"  Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="280" Click="Button_Click_5" Height="33"/>
+
+            <Ellipse HorizontalAlignment="Left" Height="25" Margin="15,0,0,0" VerticalAlignment="Center" Width="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/Zakaz.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <Grid Margin="0,20,0,0">
+
+            <Button Content="Выйти"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_4" Height="30" Width="280"/>
+            <Ellipse HorizontalAlignment="Left" Height="26" Margin="15,0,0,0" VerticalAlignment="Center" Width="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Profile/Logout.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
 
 
-    </Grid>
+
+
+
+
+
+    </StackPanel>
 </Window>

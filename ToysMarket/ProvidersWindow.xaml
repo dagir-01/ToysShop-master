@@ -21,7 +21,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="emailColumn" Width="Auto" Header="Email" Binding="{Binding email}"/>
                 <DataGridTextColumn x:Name="faxColumn" Width="Auto" Header="Fax" Binding="{Binding fax}"/>
-                <DataGridTextColumn x:Name="nameColumn" Width="Auto" Header="Название" Binding="{Binding name}"/>
+                <DataGridTextColumn x:Name="nameColumn" Width="Auto" Header="Наименование" Binding="{Binding name}"/>
                 <DataGridTextColumn x:Name="phoneColumn" Width="Auto" Header="Телефон" Binding="{Binding phone}"/>
             </DataGrid.Columns>
         </DataGrid>
@@ -29,6 +29,10 @@
         <Button Content="Добавить" Margin="10,359,657,10" Click="Button_Click" Height="Auto"/>
         <Button Content="Изменить" Margin="140,359,527,10" Click="Button_Click_1" Height="Auto"/>
         <Button Content="Удалить" Margin="270,359,397,10" Click="Button_Click_2" Height="Auto"/>
-
+        <ComboBox x:Name="Sortirovka" HorizontalAlignment="Left" Margin="431,10,0,0" VerticalAlignment="Top" Width="200" Height="40" SelectionChanged="Sortirovka_SelectionChanged">
+        <ComboBoxItem>Без сортировки</ComboBoxItem>
+        <ComboBoxItem>По наименованию</ComboBoxItem>
+        <ComboBoxItem>По Email</ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>

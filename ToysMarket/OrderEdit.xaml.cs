@@ -64,6 +64,34 @@ namespace ToysMarket
 
         }
 
+        private void Dell_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult deletemess = MessageBox.Show("Вы действительно хотите удалить?", "Удаление", MessageBoxButton.YesNo);
+                if (deletemess == MessageBoxResult.Yes)
+                {
+                    var item = jurnal_zakazovsDataGrid.SelectedItem as Models.jurnal_zakazovs;
+                    if (item != null)
+                    {
+                        _zakaz.jurnal_zakazovs.Remove(item);
+                        var tmp = App.ToysEntities.jurnal_zakazovs.FirstOrDefault(x => x.id == item.id);
+                        if (tmp != null)
+                        {
+                            App.ToysEntities.jurnal_zakazovs.Remove(tmp);
+                        }
+                        jurnal_zakazovsDataGrid.ItemsSource = null;
+                        jurnal_zakazovsDataGrid.ItemsSource = _zakaz.jurnal_zakazovs.ToList();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка");
+            }
+
+        }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
@@ -71,6 +99,10 @@ namespace ToysMarket
             {
                 if (isedit == false)
                 {
+                    foreach (var jp in _zakaz.jurnal_zakazovs.ToList())
+                    {
+                        jp.toys.quantity -= jp.quantity;
+                    }
                     App.ToysEntities.zakaz.Add(_zakaz);
                     App.ToysEntities.SaveChanges();
                 }
@@ -81,7 +113,7 @@ namespace ToysMarket
                 MessageBox.Show("Успешно");
                 Close();
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 MessageBox.Show("Введены неверные данные");
             }

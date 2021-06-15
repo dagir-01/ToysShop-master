@@ -72,9 +72,38 @@ namespace ToysMarket
             }
         }
 
+        void Method()
+        {
+
+
+            var cl = App.ToysEntities.prodaves.AsQueryable();
+
+            switch (Sortirovka.SelectedIndex)
+            {
+                case 1:
+                    cl = cl.OrderBy(x => x.firstname);
+                    break;
+                case 2:
+                    cl = cl.OrderBy(x => x.lastname);
+                    break;
+                case 3:
+                    cl = cl.OrderBy(x => x.patronymic);
+                    break;
+            }
+
+            prodavesDataGrid.DataContext = cl.ToList();
+
+            cl = cl.Where(x => x.address.Contains(Search.Text) || x.firstname.Contains(Search.Text) || x.lastname.Contains(Search.Text) || x.patronymic.Contains(Search.Text) || x.phone.Contains(Search.Text));
+        }
+
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            prodavesDataGrid.ItemsSource = App.ToysEntities.prodaves.Where(x => x.address.Contains(Search.Text) || x.firstname.Contains(Search.Text) || x.lastname.Contains(Search.Text) || x.patronymic.Contains(Search.Text) || x.phone.Contains(Search.Text)).ToList();
+            Method();
+        }
+
+        private void Sortirovka_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Method();
         }
     }
 }

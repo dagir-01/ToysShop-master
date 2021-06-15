@@ -58,17 +58,31 @@ namespace ToysMarket
 
         private void Dell_Click_1(object sender, RoutedEventArgs e)
         {
-            //MessageBoxResult deletemess = MessageBox.Show("Вы действительно хотите удалить?", "Удаление", MessageBoxButton.YesNo);
-            //if (deletemess == MessageBoxResult.Yes)
-            //{
-            //    var item = jurnal_postavokDataGrid.SelectedItem as JurnalPostavok;
-            //    if (item != null)
-            //    {
-            //        App.ToysEntities.Jurnal_postavok.Remove(item);
-            //        App.ToysEntities.SaveChanges();
-            //        jurnal_postavokDataGrid.DataContext = App.ToysEntities.Jurnal_postavok.ToList();
-            //    }
-            //}
+            try
+            {
+                MessageBoxResult deletemess = MessageBox.Show("Вы действительно хотите удалить?", "Удаление", MessageBoxButton.YesNo);
+                if (deletemess == MessageBoxResult.Yes)
+                {
+                    var item = jurnal_postavokDataGrid.SelectedItem as Models.Jurnal_postavok;
+                    if (item != null)
+                    {
+                        _postavki.Jurnal_postavok.Remove(item);
+                        var tmp = App.ToysEntities.Jurnal_postavok.FirstOrDefault(x => x.id == item.id);
+                        if (tmp != null)
+                        {
+                            App.ToysEntities.Jurnal_postavok.Remove(tmp);
+                        }
+                        jurnal_postavokDataGrid.ItemsSource = null;
+                        jurnal_postavokDataGrid.ItemsSource = _postavki.Jurnal_postavok.ToList();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка");
+            }
+            
         }
 
         private void Accept_Click_3(object sender, RoutedEventArgs e)
@@ -77,9 +91,13 @@ namespace ToysMarket
             {
                 if (isedit == false)
                 {
+                    foreach (var jp in _postavki.Jurnal_postavok.ToList())
+                    {
+                        jp.toys.quantity += jp.count;
+                    }
                     App.ToysEntities.postavki.Add(_postavki);
                     App.ToysEntities.SaveChanges();
-                    
+
                 }
                 else
                 {

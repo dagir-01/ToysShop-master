@@ -16,8 +16,8 @@
 
         <DataGrid x:Name="jurnal_postavokDataGrid" CanUserAddRows="False" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10,195" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="countColumn" Width="SizeToHeader" Header="count" Binding="{Binding count}"/>
-                <DataGridTextColumn x:Name="id_toysColumn" Width="SizeToHeader" Header="id toys" Binding="{Binding id_toys}"/>
+                <DataGridTextColumn x:Name="countColumn" Width="SizeToHeader" Header="Количество" Binding="{Binding count}"/>
+                <DataGridTextColumn x:Name="id_toysColumn" Width="SizeToHeader" Header="Наименование" Binding="{Binding toys.name}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="98" Click="Add_Click"/>
@@ -33,7 +33,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="date postavki:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Дата поставки:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <DatePicker x:Name="date_postavkiDatePicker" DisplayDateStart="{Binding StartDate, Mode=OneTime}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding date_postavki, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
             <Label Content="Поставщик:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
             <ComboBox x:Name="id_postavshikTextBox" DisplayMemberPath="name" SelectedValuePath="id" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1"  SelectedValue="{Binding id_postavshik, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
