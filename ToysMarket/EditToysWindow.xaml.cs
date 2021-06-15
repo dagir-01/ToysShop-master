@@ -95,13 +95,16 @@ namespace ToysMarket
             }
 
         }
-      
 
+        private void quantityTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
 
-
-
-
+        private void QuantityTB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
+        }
     }
     public static class ByteImageConverter
     {

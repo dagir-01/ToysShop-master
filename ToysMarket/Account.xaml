@@ -107,7 +107,7 @@
             <Button
                 x:Name="enter"
                 BorderThickness="0"
-                Content="Login in"
+                Content="Войти в систему"
                 Foreground="White"
                 Height="50" Click="enter_Click"/>
         </StackPanel>

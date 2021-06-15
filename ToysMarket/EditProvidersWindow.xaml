@@ -30,7 +30,7 @@
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Наименование:"/>
             <TextBox x:Name="nameTextBox" TextChanged="phoneTextBox_TextChanged" Width="120" VerticalAlignment="Center" Text="{Binding name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Телефон:"/>
-            <TextBox x:Name="phoneTextBox" TextChanged="phoneTextBox_TextChanged" Width="120" VerticalAlignment="Center" Text="{Binding phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox PreviewTextInput="phoneTextBox_PreviewTextInput" x:Name="phoneTextBox" TextChanged="phoneTextBox_TextChanged" Width="120" VerticalAlignment="Bottom" Text="{Binding phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3,0,0,4" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
 
         <Button x:Name="Ok" Content="Добавить" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>

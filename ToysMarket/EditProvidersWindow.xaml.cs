@@ -81,7 +81,7 @@ namespace ToysMarket
                 Ok.IsEnabled = false;
             }
             else
-            {
+            {            
                 if (string.IsNullOrWhiteSpace(faxTextBox.Text))
                 {
                     Error.Text = "Введите факс";
@@ -102,9 +102,17 @@ namespace ToysMarket
                             Ok.IsEnabled = false;
                         }
                         else
-                        {          
+                        {
+                            if (phoneTextBox.Text.Length != 11)
+                            {
+                                Error.Text = "Номер телефона должен содержать 11 символов";
+                                Ok.IsEnabled = false;
+                            }
+                            else
+                            {
                                 Error.Text = "";
                                 Ok.IsEnabled = true;
+                            }
                         }
                     }
                 }

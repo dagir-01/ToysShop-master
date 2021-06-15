@@ -75,10 +75,12 @@ namespace ToysMarket
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+            e.Handled = !(Char.IsDigit(e.Text, 0));
         }
 
         private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            
             Errors();
         }
 
@@ -119,8 +121,16 @@ namespace ToysMarket
                             }
                             else
                             {
-                                Error.Text = "";
-                                Ok.IsEnabled = true;
+                                if (phoneTextBox.Text.Length != 11)
+                                {
+                                    Error.Text = "Номер телефона должен содержать 11 символов";
+                                    Ok.IsEnabled = false;
+                                }
+                                else
+                                {
+                                    Error.Text = "";
+                                    Ok.IsEnabled = true;
+                                }
 
                             }
                         }
